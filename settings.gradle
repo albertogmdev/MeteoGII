@@ -1,0 +1,2 @@
+include ':app', ':lib', ':mysql-connector-java-5.1.15-bin', ':json-20131018'
+rootProject.name='MainActivity'
