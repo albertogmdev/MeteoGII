@@ -19,6 +19,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startButton(View v){
+
         setContentView(R.layout.principal_window);
+    }
+
+    public void refrescarButton(View v){
+
+        setContentView(R.layout.activity_main);
     }
 }
