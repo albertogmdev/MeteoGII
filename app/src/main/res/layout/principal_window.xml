@@ -540,7 +540,7 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/graficas"
 
-                    android:onClick="refrescarButton"
+                    android:onClick="startButton"
                     />
 
             </LinearLayout>
