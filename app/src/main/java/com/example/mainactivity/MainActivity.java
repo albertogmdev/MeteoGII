@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_splash_screen);
 
         texto = findViewById(R.id.textView);
 
@@ -24,12 +24,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void startButton(View v) {
 
-        setContentView(R.layout.principal_window);
+        setContentView(R.layout.activity_station_information);
     }
 
     public void refrescarButton(View v) {
 
-        setContentView(R.layout.principal_window);
+        setContentView(R.layout.activity_station_information);
 
         TextView temperatura = findViewById(R.id.temperaturaValor);
         TextView humedad = findViewById(R.id.humedadValor);
