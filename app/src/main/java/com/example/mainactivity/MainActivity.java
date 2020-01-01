@@ -1,7 +1,14 @@
 package com.example.mainactivity;
 
+import androidx.annotation.MainThread;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -11,14 +18,12 @@ import java.util.concurrent.*;
 public class MainActivity extends AppCompatActivity {
 
     private TextView texto;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
         texto = findViewById(R.id.textView);
-
     }
 
 
@@ -59,6 +64,23 @@ public class MainActivity extends AppCompatActivity {
         sulfuro.setText(datos[11]);
         benzeno.setText(datos[12]);
         humo.setText(datos[13]);
+
+        /*if(Integer.parseInt(datos[2])>=10){
+            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(MainActivity.this)
+                    .setSmallIcon(android.R.drawable.stat_sys_warning)
+                    .setLargeIcon((((BitmapDrawable)getResources().getDrawable(R.drawable.nubes))).getBitmap())
+                    .setContentTitle("CUIDADO")
+                    .setContentText("Notificacion alerta")
+                    .setContentInfo("Temperatura alta")
+                    .setTicker("Alerta¡¡");
+
+            Intent noIntent = new Intent(MainActivity.this, MainActivity.class);
+            PendingIntent contIntent = PendingIntent.getActivity(MainActivity.this, 0, noIntent, 0);
+            mBuilder.setContentIntent(contIntent);
+
+            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            mNotificationManager.notify(6504, mBuilder.build());
+        }*/
     }
 
 
