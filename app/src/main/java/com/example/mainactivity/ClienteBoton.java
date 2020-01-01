@@ -1,5 +1,7 @@
 package com.example.mainactivity;
 
+import android.util.Log;
+
 import java.io.*;
 import java.net.*;
 import java.util.concurrent.Callable;
@@ -25,8 +27,9 @@ public class ClienteBoton implements Callable<String> {
     public String call(){
 
         try{
-
+            Log.e("HEY","CONNECTION");
             cliente = new Socket("weatherubicuastation.duckdns.org", 8080);
+            Log.e("HEY","CONNECTION2");
 
             entrada = new DataInputStream(cliente.getInputStream());
             salida = new DataOutputStream(cliente.getOutputStream());

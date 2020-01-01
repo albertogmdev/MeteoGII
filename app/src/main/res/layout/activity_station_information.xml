@@ -40,10 +40,11 @@
             android:layout_height="wrap_content">
             <!--- Spinner para elección de estación -->
             <com.weiwangcn.betterspinner.library.BetterSpinner
-                android:id="@+id/eleccion"
+                android:id="@+id/spinnerestacion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/colorBoton"
+                android:textColor="@color/colorLetra"
                 android:textSize="25sp">
 
             </com.weiwangcn.betterspinner.library.BetterSpinner>
@@ -409,149 +410,149 @@
             </LinearLayout>
 
             <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="1">
-                <!--- Etiqueta oxigeno -->
-                <TextView
-                    android:id="@+id/oxigeno"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nivel 02"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="20sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <!--- Etiqueta oxigeno -->
+                    <TextView
+                        android:id="@+id/oxigeno"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel 02"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/oxigenoValor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="46%"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp"/>
+                </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="1">
-                <TextView
-                    android:id="@+id/oxigenoValor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="46%"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="20sp"/>
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="1">
-                <!--- Etiqueta amoniaco -->
-                <TextView
-                    android:id="@+id/amoniaco"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nivel Amoniaco"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="20sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <!--- Etiqueta amoniaco -->
+                    <TextView
+                        android:id="@+id/amoniaco"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel Amoniaco"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/amoniacoValor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5%"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp"/>
+                </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="1">
-                <TextView
-                    android:id="@+id/amoniacoValor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="5%"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="20sp"/>
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="1">
-                <!--- Etiqueta azufre -->
-                <TextView
-                    android:id="@+id/sulfuro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nivel Azufre"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="20sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <!--- Etiqueta azufre -->
+                    <TextView
+                        android:id="@+id/sulfuro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel Azufre"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/sulfuroValor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.3%"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp"/>
+                </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="1">
-                <TextView
-                    android:id="@+id/sulfuroValor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0.3%"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="20sp"/>
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="1">
-                <!--- Etiqueta benzeno -->
-                <TextView
-                    android:id="@+id/benzeno"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nivel Benzeno"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="20sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <!--- Etiqueta benzeno -->
+                    <TextView
+                        android:id="@+id/benzeno"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel Benzeno"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/benzenoValor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1%"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp"/>
+                </LinearLayout>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="1">
-                <TextView
-                    android:id="@+id/benzenoValor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1%"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="20sp"/>
-            </LinearLayout>
-        </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
