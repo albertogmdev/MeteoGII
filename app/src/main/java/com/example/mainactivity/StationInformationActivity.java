@@ -84,6 +84,22 @@ public class StationInformationActivity extends AppCompatActivity {
             benzeno.setText(datos[12]);
             humo.setText(datos[13]);
         }
+        /*if(Integer.parseInt(datos[2])>=10){
+            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(MainActivity.this)
+                    .setSmallIcon(android.R.drawable.stat_sys_warning)
+                    .setLargeIcon((((BitmapDrawable)getResources().getDrawable(R.drawable.nubes))).getBitmap())
+                    .setContentTitle("CUIDADO")
+                    .setContentText("Notificacion alerta")
+                    .setContentInfo("Temperatura alta")
+                    .setTicker("Alerta¡¡");
+
+            Intent noIntent = new Intent(MainActivity.this, MainActivity.class);
+            PendingIntent contIntent = PendingIntent.getActivity(MainActivity.this, 0, noIntent, 0);
+            mBuilder.setContentIntent(contIntent);
+
+            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            mNotificationManager.notify(6504, mBuilder.build());
+        }*/
     }
 
 
