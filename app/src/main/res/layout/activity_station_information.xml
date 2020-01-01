@@ -12,49 +12,56 @@
     <LinearLayout
         android:id="@+id/fijo"
         android:layout_width="match_parent"
-        android:layout_height="118dp"
+        android:layout_height="120dp"
         android:orientation="horizontal"
+        android:gravity="center"
 
         app:layout_constraintBottom_toTopOf="@+id/divider">
 
         <!--- Label para estacion -->
-        <TextView
-            android:id="@+id/estacion"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/estacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_marginTop="47dp"
-            android:layout_marginStart="25dp"
-            android:text="Estacion   "
+                android:text="Estacion   "
 
-            android:textAlignment="viewStart"
-            android:textColor="@color/colorLetra"
-            android:textSize="25sp"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorLetra"
+                android:textSize="25sp"
 
-            app:layout_constraintBottom_toTopOf="@id/fijo" />
+                app:layout_constraintBottom_toTopOf="@id/fijo" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <!--- Spinner para elección de estación -->
+            <com.weiwangcn.betterspinner.library.BetterSpinner
+                android:id="@+id/eleccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorBoton"
+                android:textSize="25sp">
 
-
-        <!--- Spinner para elección de estación -->
-        <com.weiwangcn.betterspinner.library.BetterSpinner
-            android:id="@+id/eleccion"
-            android:layout_width="170dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="48dp"
-            android:background="@color/colorBoton">
-
-        </com.weiwangcn.betterspinner.library.BetterSpinner>
-
+            </com.weiwangcn.betterspinner.library.BetterSpinner>
+        </LinearLayout>
     </LinearLayout>
 
     <!--- Separa los datos de la estacion -->
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorLetra"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLetra"
 
-        app:layout_constraintTop_toBottomOf="@id/fijo" />
-
+            app:layout_constraintTop_toBottomOf="@id/fijo" />
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -70,485 +77,552 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
-                <!--- Label para tiempo -->
-                <TextView
-                    android:id="@+id/tiempo"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:layout_marginStart="36dp"
-                    android:layout_marginTop="60dp"
-
-                    android:text="Tiempo"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/divider" />
-
-                <TextView
-                    android:id="@+id/timepoValor"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:layout_marginTop="60dp"
-                    android:text="soleado"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp"/>
-
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
-
-                <!--- Label para temperatura -->
-                <TextView
-                    android:id="@+id/temperatura"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:layout_marginStart="36dp"
-
-                    android:text="Temperatura"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/temperaturaValor"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:text="28 ºC"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp" />
-
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <!--- Label para tiempo -->
+                    <TextView
+                        android:id="@+id/tiempo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tiempo"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/timepoValor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Soleado"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp"/>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
-                <!--- Label para presion atmosferica -->
-                <TextView
-                    android:id="@+id/presion"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:layout_marginStart="36dp"
-
-                    android:text="Presion at."
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/presionValor"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:text="18 PA"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp" />
-
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <!--- Label para temperatura -->
+                    <TextView
+                        android:id="@+id/temperatura"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Temperatura"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/temperaturaValor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="28ºC"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp"/>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
-                <!--- Label para humedad -->
-                <TextView
-                    android:id="@+id/humedad"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:layout_marginStart="36dp"
-
-                    android:text="Humedad"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/humedadValor"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:text="30 %"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp" />
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <!--- Label para presion atmosferica -->
+                    <TextView
+                        android:id="@+id/presion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Presión atm."
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/presionValor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="18 Pa"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp"/>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
-                <!--- Etiqueta lluvia -->
-                <TextView
-                    android:id="@+id/lluvia"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:layout_marginStart="36dp"
-
-                    android:text="Cantidad lluvia"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/lluviaValor"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:text="10 dm/m3"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp" />
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <!--- Label para humedad -->
+                    <TextView
+                        android:id="@+id/humedad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Humedad"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/humedadValor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="30%"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp"/>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
-                <!--- Etiqueta anemómetro -->
-                <TextView
-                    android:id="@+id/anemometro"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:layout_marginStart="36dp"
-
-                    android:text="Anemómetro"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/anemometroValor"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:text="50"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp" />
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <!--- Etiqueta lluvia -->
+                    <TextView
+                        android:id="@+id/lluvia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cantidad lluvia"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/lluviaValor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10 dm/m3"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp"/>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
-                <!--- Calidad del aire -->
-                <TextView
-                    android:id="@+id/aire"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:layout_marginStart="36dp"
-
-                    android:text="Calidad del aire"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/calidadValor"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:text="buena"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp" />
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <!--- Etiqueta anemómetro -->
+                    <TextView
+                        android:id="@+id/anemometro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Anemómetro"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/anemometroValor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp"/>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
-                <!--- Etiqueta radiación -->
-                <TextView
-                    android:id="@+id/radiacion"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:layout_marginStart="36dp"
-
-                    android:text="Radiación"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/radiacionValor"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:text="70"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp" />
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <!--- Calidad del aire -->
+                    <TextView
+                        android:id="@+id/aire"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Calidad de aire"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/calidadValor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Buena"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp"/>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
-                <!--- Etiqueta luz -->
-                <TextView
-                    android:id="@+id/luz"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:layout_marginStart="36dp"
-
-                    android:text="Nivel luz"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/luzValor"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:text="46 Ω"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp" />
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <!--- Etiqueta radiación -->
+                    <TextView
+                        android:id="@+id/radiacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel de Radiación"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/radiacionValor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="70"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp"/>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <!--- Etiqueta luz -->
+                    <TextView
+                        android:id="@+id/luz"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel de Luz"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/luzValor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="46 Ω"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1">
                 <!--- Etiqueta oxigeno -->
                 <TextView
                     android:id="@+id/oxigeno"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:layout_marginStart="36dp"
-
-                    android:text="Nivel O2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nivel 02"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorLetra"
-                    android:textSize="19sp"
-                    app:layout_constraintStart_toStartOf="parent" />
-
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1">
                 <TextView
                     android:id="@+id/oxigenoValor"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:text="46 %"
-                    android:textAlignment="viewStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="46%"
                     android:textColor="@color/colorLetra"
-                    android:textSize="19sp" />
-
+                    android:textSize="20sp"/>
             </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
-
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1">
                 <!--- Etiqueta amoniaco -->
                 <TextView
                     android:id="@+id/amoniaco"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:layout_marginStart="36dp"
-
-                    android:text="Nivel NH3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nivel Amoniaco"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorLetra"
-                    android:textSize="19sp"
-                    app:layout_constraintStart_toStartOf="parent" />
-
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1">
                 <TextView
                     android:id="@+id/amoniacoValor"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:text="5 %"
-                    android:textAlignment="viewStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5%"
                     android:textColor="@color/colorLetra"
-                    android:textSize="19sp" />
-
+                    android:textSize="20sp"/>
             </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
-
-                <!--- Etiqueta sulfuro -->
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1">
+                <!--- Etiqueta azufre -->
                 <TextView
                     android:id="@+id/sulfuro"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:layout_marginStart="36dp"
-
-                    android:text="Nivel S"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nivel Azufre"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorLetra"
-                    android:textSize="19sp"
-                    app:layout_constraintStart_toStartOf="parent" />
-
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1">
                 <TextView
                     android:id="@+id/sulfuroValor"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:text="0.3 %"
-                    android:textAlignment="viewStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.3%"
                     android:textColor="@color/colorLetra"
-                    android:textSize="19sp" />
-
+                    android:textSize="20sp"/>
             </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
-
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1">
                 <!--- Etiqueta benzeno -->
                 <TextView
                     android:id="@+id/benzeno"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:layout_marginStart="36dp"
-
-                    android:text="Nivel C6H6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nivel Benzeno"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorLetra"
-                    android:textSize="19sp"
-                    app:layout_constraintStart_toStartOf="parent" />
-
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1">
                 <TextView
                     android:id="@+id/benzenoValor"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:text="1 %"
-                    android:textAlignment="viewStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1%"
                     android:textColor="@color/colorLetra"
-                    android:textSize="19sp" />
+                    android:textSize="20sp"/>
+            </LinearLayout>
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <!--- Etiqueta humo -->
+                    <TextView
+                        android:id="@+id/humo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel Humo"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/humoValor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1%"
+                        android:textColor="@color/colorLetra"
+                        android:textSize="20sp"/>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="20dp">
 
-                <!--- Etiqueta humo -->
-                <TextView
-                    android:id="@+id/humo"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-                    android:layout_marginStart="36dp"
+                    <ImageButton
+                        android:id="@+id/refrescar"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/refrescar"
+                        android:onClick="refrescarButton"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent">
 
-                    android:text="Nivel humo"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/humoValor"
-                    android:layout_width="170dp"
-                    android:layout_height="70dp"
-
-                    android:text="1 %"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorLetra"
-                    android:textSize="19sp" />
-
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageButton
+                        android:id="@+id/graficas"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/graficas"
+                        android:onClick="startButton"/>
+                </LinearLayout>
             </LinearLayout>
-
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/refrescar"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="36dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/refrescar"
-
-                    android:onClick="refrescarButton"
-                    />
-
-                <ImageButton
-                    android:id="@+id/graficas"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/graficas"
-
-                    android:onClick="startButton"
-                    />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/blanco"
-                android:layout_width="fill_parent"
-                android:layout_height="250dp"
-
-                android:text=""
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/humoValor" />
 
         </LinearLayout>
 
