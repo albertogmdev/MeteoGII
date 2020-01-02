@@ -2,7 +2,6 @@ package com.example.mainactivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -31,7 +30,7 @@ public class StationInformationActivity extends AppCompatActivity {
     private TextView sulfuro;
     private TextView benzeno;
     private TextView humo;
-    private static final String[] stations = {"1", "2","3","4","5"};
+    private static final String[] stations = Singleton.getInstance().getStations();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,46 +101,122 @@ public class StationInformationActivity extends AppCompatActivity {
 
     public void refresh(String consulta)
     {
+        Log.e("HEY", consulta);
+        String[] datos = consulta.split("//");
 
-        if(!consulta.equals("NULL"))
+        if(!datos[2].equals("NULL"))
         {
-
-            Log.e("HEY", consulta);
-            String[] datos = consulta.split("//");
             temperatura.setText(String.format(datos[2]));
-            humedad.setText(datos[3]);
-            presion.setText(datos[4]);
-            lluvia.setText(datos[5]);
-            luz.setText(datos[6]);
-            radiacion.setText(datos[7]);
-            anemometro.setText(datos[8]);
-            oxigeno.setText(datos[9]);
-            amoniaco.setText(datos[10]);
-            sulfuro.setText(datos[11]);
-            benzeno.setText(datos[12]);
-            humo.setText(datos[13]);
         }
         else
         {
-            temperatura.setText("0");
-            humedad.setText("0");
-            presion.setText("0");
-            lluvia.setText("0");
-            luz.setText("0");
-            radiacion.setText("0");
-            anemometro.setText("0");
-            oxigeno.setText("0");
-            amoniaco.setText("0");
-            sulfuro.setText("0");
-            benzeno.setText("0");
-            humo.setText("0");
+            temperatura.setText(0);
+        }
+
+        if(!datos[3].equals("NULL"))
+        {
+            humedad.setText(String.format(datos[3]));
+        }
+        else
+        {
+            humedad.setText(0);
+        }
+
+        if(!datos[4].equals("NULL"))
+        {
+            presion.setText(datos[4]);
+        }
+        else
+        {
+            presion.setText(0);
+        }
+
+        if(!datos[5].equals("NULL"))
+        {
+            lluvia.setText(String.format(datos[5]));
+        }
+        else
+        {
+            lluvia.setText(0);
+        }
+
+        if(!datos[6].equals("NULL"))
+        {
+            luz.setText(String.format(datos[6]));
+        }
+        else
+        {
+            humedad.setText(0);
+        }
+
+        if(!datos[7].equals("NULL"))
+        {
+            radiacion.setText(String.format(datos[7]));
+        }
+        else
+        {
+            radiacion.setText(0);
+        }
+
+        if(!datos[8].equals("NULL"))
+        {
+            anemometro.setText(String.format(datos[8]));
+        }
+        else
+        {
+            anemometro.setText(0);
+        }
+
+        if(!datos[9].equals("NULL"))
+        {
+            oxigeno.setText(String.format(datos[9]));
+        }
+        else
+        {
+            oxigeno.setText(0);
+        }
+
+        if(!datos[10].equals("NULL"))
+        {
+            amoniaco.setText(String.format(datos[10]));
+        }
+        else
+        {
+            amoniaco.setText(0);
+        }
+
+        if(!datos[11].equals("NULL"))
+        {
+            sulfuro.setText(String.format(datos[11]));
+        }
+        else
+        {
+            sulfuro.setText(0);
+        }
+
+        if(!datos[12].equals("NULL"))
+        {
+            benzeno.setText(String.format(datos[12]));
+        }
+        else
+        {
+            benzeno.setText(0);
+        }
+
+        if(!datos[13].equals("NULL"))
+        {
+            humo.setText(String.format(datos[13]));
+        }
+        else
+        {
+            humo.setText(0);
         }
     }
 
 
     public String resultadoRefresh() {
 
-        FutureTask task = new FutureTask(new ClienteBoton("1"));
+        FutureTask task = new FutureTask(new Cliente(spinnerStation.getText().toString(), "Refresh"));
 
         ExecutorService es = Executors.newSingleThreadExecutor();
         es.submit(task);

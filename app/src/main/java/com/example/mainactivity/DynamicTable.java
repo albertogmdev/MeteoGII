@@ -91,6 +91,7 @@ public class DynamicTable {
                     info = rows[indexCell];
                     Button buttonStation = new Button(context);
                     buttonStation.setText(info);
+                    Singleton.getInstance().addStation(info);
                     //Asignamose el Listener
                     final String finalInfo = info;
                     buttonStation.setOnClickListener(new View.OnClickListener() {

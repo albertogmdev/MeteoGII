@@ -7,19 +7,26 @@ import java.net.*;
 import java.util.concurrent.Callable;
 
 
-public class ClienteBoton implements Callable<String> {
+public class Cliente implements Callable<String> {
 
     Socket cliente;
 
     DataInputStream entrada;
     DataOutputStream salida;
 
-    String mensaje, respuesta;
+    String mensaje, respuesta, typeMessage;
 
     private String idConexion;
 
-    public ClienteBoton(String id){
+    public Cliente(String id, String typeMesage){
         this.idConexion = id;
+        this.typeMessage = typeMesage;
+        this.respuesta = "NULL";
+    }
+
+    public Cliente(String typeMesage){
+        this.idConexion = "";
+        this.typeMessage = typeMesage;
         this.respuesta = "NULL";
     }
 
@@ -33,8 +40,23 @@ public class ClienteBoton implements Callable<String> {
 
             entrada = new DataInputStream(cliente.getInputStream());
             salida = new DataOutputStream(cliente.getOutputStream());
+            if(typeMessage.equals("Refresh") && idConexion.equals(""))
+            {
+                mensaje = "Refresh-All";
+            }
+            else if(typeMessage.equals("Refresh"))
+            {
+                mensaje = "Refresh-"+ this.idConexion;
+            }
+            else if(typeMessage.equals("Notify") && idConexion.equals(""))
+            {
+                mensaje = "Notify-All";
+            }
+            else        //Aviso de una única estación
+            {
+                mensaje = "Notify-" + this.idConexion;
+            }
 
-            mensaje = "Refresh-"+this.idConexion;
 
             salida.writeUTF(mensaje);
 

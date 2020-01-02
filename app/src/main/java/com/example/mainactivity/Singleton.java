@@ -49,5 +49,10 @@ public class Singleton {
         }
     }
 
+    public void addStation(String identificadorEstacion)
+    {
+        this.stations.add(identificadorEstacion);
+    }
+
 
 }
