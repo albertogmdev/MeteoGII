@@ -3,6 +3,7 @@ package com.example.mainactivity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +31,7 @@ public class DynamicTable {
         this.mainActivity = mainActivity;
         this.tableLayout = tableLayout;
         this.context = context;
+        //Singleton.getInstance().resetCounterStations();
     }
 
     /**Incluir la cabecera de la tabla dinámica*/
@@ -37,19 +39,23 @@ public class DynamicTable {
     {
         this.header = header;
         createHeader();
+        //Singleton.getInstance().resetCounterStations();
     }
 
     /**Incluir los datos de la tabla dinámica*/
     public void addData(ArrayList<String[]> data)
     {
         this.data = data;
+        //Singleton.getInstance().resetCounterStations();
         createDataTable();
     }
 
     /**Crear una nueva fila de la tabla dinámica*/
     public void newRow()
     {
+
         tableRow = new TableRow(context);
+        //Singleton.getInstance().addOneStation();
     }
 
     /**Crear una nueva celda de la tabla dinámica*/
@@ -79,13 +85,13 @@ public class DynamicTable {
     private void createDataTable()
     {
         String info;
-        for(indexRow = 1; indexRow < header.length; indexRow++ )
+        for(indexRow = 0; indexRow < data.size(); indexRow++ )
         {
             newRow();
             for(indexCell = 0; indexCell < header.length; indexCell++)
             {
                 newCell();
-                String[] rows = data.get(indexRow - 1);
+                String[] rows = data.get(indexRow);
                 if(indexCell == 0)
                 {
                     info = rows[indexCell];
@@ -107,6 +113,7 @@ public class DynamicTable {
                     buttonStation.setTextColor(Color.parseColor("#F0EBEB"));
                     buttonStation.setTextSize(20);
                     tableRow.addView(buttonStation, newTableRowParams());
+
                 }
                 else
                 {

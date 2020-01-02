@@ -2,12 +2,14 @@ package com.example.mainactivity;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Singleton {
     private static Singleton instance;
     private String identificadorEstacion;
-    private String[] headerMainActivity = {"Identificador", "Ubicación", "Temperatura", "Tiempo", "Presión Atmosférica"};
+    private String[] headerMainActivity = {"Identificador", "Ubicación", "Temperatura", "Humedad", "Presión Atmosférica"};
     private ArrayList<String> stations = new ArrayList<>();
+    private int counterStations;
 
     public static synchronized Singleton getInstance() {
         if (instance == null) {
@@ -18,7 +20,9 @@ public class Singleton {
 
     private Singleton()
     {
+
         this.identificadorEstacion = "";
+        this.counterStations = 0;
     }
 
     public String getIdentificadorEstacion() {
@@ -39,19 +43,34 @@ public class Singleton {
 
     public String[] getStations()
     {
-        return (String[]) this.stations.toArray();
+        return Arrays.copyOf(this.stations.toArray(), this.stations.toArray().length, String[].class);
     }
     public void setStations(String[] stations)
     {
-        for(int i = 0; i < stations.length; i++)
-        {
-            this.stations.add(stations[i]);
-        }
+        this.stations.addAll(Arrays.asList(stations));
     }
 
     public void addStation(String identificadorEstacion)
     {
         this.stations.add(identificadorEstacion);
+    }
+
+    /*public void addOneStation()
+    {
+        this.counterStations++;
+    }*/
+    /*public void resetCounterStations()
+    {
+        this.counterStations = 0;
+    }*/
+    public int getCounterStations()
+    {
+        return this.counterStations;
+    }
+
+    public void setCounterStations(int counterStations)
+    {
+        this.counterStations = counterStations;
     }
 
 

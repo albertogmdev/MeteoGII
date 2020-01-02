@@ -41,30 +41,34 @@ public class Cliente implements Callable<String> {
             entrada = new DataInputStream(cliente.getInputStream());
             salida = new DataOutputStream(cliente.getOutputStream());
 
+            if(typeMessage.equals("Stations")) {
+                mensaje = "Stations";
+            }
+
             //Refresh-idEstacion se especifica el id de la estacion que se quiere consultar y devuelve TODOS los datos
             //idConexion tiene que ser idEstacion
-            if(typeMessage.equals("Refresh")){
+            else if(typeMessage.equals("Refresh")){
 
-                mensaje += "Refresh-"+idConexion;
+                mensaje = "Refresh-"+idConexion;
             }
             //Refresh-numeroEstaciones se especifica cuantas estaciones tenemos siendo el id de las estaciones de 1 a n, es decir
             //si hay 5 estaciones hara las consultas para la estacion 1,2,3,4,5 devolviendo TODOS los datos
             //idConexion tiene que ser numero de estaciones que tenemos
             else if(typeMessage.equals("RefreshAll")){
-                mensaje += "RefreshAll-"+idConexion;
+                mensaje = "RefreshAll-"+idConexion;
 
             }
             //RefreshTable-numeroEstaciones se especifica cuantas estaciones tenemos siendo el id de las estaciones de 1 a n, es decir
             //si hay 5 estaciones hara las consultas para la estacion 1,2,3,4,5 devolviendo unicamente ID, ubicacion, temperatura, humedad y presion
             //idConexion tiene que ser numero de estaciones que tenemos
             else if(typeMessage.equals("RefreshTable")){
-                mensaje += "RefreshTable-"+idConexion;
+                mensaje = "RefreshTable-"+idConexion;
 
             }
             //Notify-idEstacion se especifica el id de la estacion y nos devuelve un string con las alertas de esa estacion
             //idConexion tiene que ser idEstacion
             else if(typeMessage.equals("Notify")){
-                mensaje += "Notify-"+idConexion;
+                mensaje = "Notify-"+idConexion;
 
             }
 

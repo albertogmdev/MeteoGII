@@ -73,11 +73,6 @@ public class StationInformationActivity extends AppCompatActivity {
     }
 
     public void refrescarButton(View v) {
-        Log.e("HEY", "Problem");
-        //startActivity(new Intent(StationInformationActivity.this, StationInformationActivity.class));
-        //super.onBackPressed();
-        //finish();
-        //setContentView(R.layout.activity_station_information);
         String consulta = resultadoRefresh();
         refresh(consulta);
 
@@ -110,7 +105,7 @@ public class StationInformationActivity extends AppCompatActivity {
         }
         else
         {
-            temperatura.setText(0);
+            temperatura.setText("0");
         }
 
         if(!datos[3].equals("NULL"))
@@ -119,7 +114,7 @@ public class StationInformationActivity extends AppCompatActivity {
         }
         else
         {
-            humedad.setText(0);
+            humedad.setText("0");
         }
 
         if(!datos[4].equals("NULL"))
@@ -128,7 +123,7 @@ public class StationInformationActivity extends AppCompatActivity {
         }
         else
         {
-            presion.setText(0);
+            presion.setText("0");
         }
 
         if(!datos[5].equals("NULL"))
@@ -137,7 +132,7 @@ public class StationInformationActivity extends AppCompatActivity {
         }
         else
         {
-            lluvia.setText(0);
+            lluvia.setText("0");
         }
 
         if(!datos[6].equals("NULL"))
@@ -146,7 +141,7 @@ public class StationInformationActivity extends AppCompatActivity {
         }
         else
         {
-            humedad.setText(0);
+            luz.setText("0");
         }
 
         if(!datos[7].equals("NULL"))
@@ -155,7 +150,7 @@ public class StationInformationActivity extends AppCompatActivity {
         }
         else
         {
-            radiacion.setText(0);
+            radiacion.setText("0");
         }
 
         if(!datos[8].equals("NULL"))
@@ -164,7 +159,7 @@ public class StationInformationActivity extends AppCompatActivity {
         }
         else
         {
-            anemometro.setText(0);
+            anemometro.setText("0");
         }
 
         if(!datos[9].equals("NULL"))
@@ -173,7 +168,7 @@ public class StationInformationActivity extends AppCompatActivity {
         }
         else
         {
-            oxigeno.setText(0);
+            oxigeno.setText("0");
         }
 
         if(!datos[10].equals("NULL"))
@@ -182,7 +177,7 @@ public class StationInformationActivity extends AppCompatActivity {
         }
         else
         {
-            amoniaco.setText(0);
+            amoniaco.setText("0");
         }
 
         if(!datos[11].equals("NULL"))
@@ -191,7 +186,7 @@ public class StationInformationActivity extends AppCompatActivity {
         }
         else
         {
-            sulfuro.setText(0);
+            sulfuro.setText("0");
         }
 
         if(!datos[12].equals("NULL"))
@@ -200,7 +195,7 @@ public class StationInformationActivity extends AppCompatActivity {
         }
         else
         {
-            benzeno.setText(0);
+            benzeno.setText("0");
         }
 
         if(!datos[13].equals("NULL"))
@@ -209,7 +204,7 @@ public class StationInformationActivity extends AppCompatActivity {
         }
         else
         {
-            humo.setText(0);
+            humo.setText("0");
         }
     }
 
