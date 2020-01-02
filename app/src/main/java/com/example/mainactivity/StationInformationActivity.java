@@ -39,7 +39,7 @@ public class StationInformationActivity extends AppCompatActivity {
         spinnerStation = findViewById(R.id.spinnerestacion);
         ArrayAdapter<String> adapterStations = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, stations);
         spinnerStation.setAdapter(adapterStations);
-        spinnerStation.setText(stations[0]);
+        spinnerStation.setText(Singleton.getInstance().getIdentificadorEstacion());
         temperatura = findViewById(R.id.temperaturaValor);
         humedad = findViewById(R.id.humedadValor);
         presion = findViewById(R.id.presionValor);
@@ -52,6 +52,7 @@ public class StationInformationActivity extends AppCompatActivity {
         sulfuro = findViewById(R.id.sulfuroValor);
         benzeno = findViewById(R.id.benzenoValor);
         humo = findViewById(R.id.humoValor);
+        refresh(resultadoRefresh());
     }
 
     public void refrescarButton(View v) {
@@ -60,9 +61,30 @@ public class StationInformationActivity extends AppCompatActivity {
         //super.onBackPressed();
         //finish();
         //setContentView(R.layout.activity_station_information);
-
-
         String consulta = resultadoRefresh();
+        refresh(consulta);
+
+        /*if(Integer.parseInt(datos[2])>=10){
+            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(MainActivity.this)
+                    .setSmallIcon(android.R.drawable.stat_sys_warning)
+                    .setLargeIcon((((BitmapDrawable)getResources().getDrawable(R.drawable.nubes))).getBitmap())
+                    .setContentTitle("CUIDADO")
+                    .setContentText("Notificacion alerta")
+                    .setContentInfo("Temperatura alta")
+                    .setTicker("Alerta¡¡");
+
+            Intent noIntent = new Intent(MainActivity.this, MainActivity.class);
+            PendingIntent contIntent = PendingIntent.getActivity(MainActivity.this, 0, noIntent, 0);
+            mBuilder.setContentIntent(contIntent);
+
+            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            mNotificationManager.notify(6504, mBuilder.build());
+        }*/
+    }
+
+    public void refresh(String consulta)
+    {
+
         if(!consulta.equals("NULL"))
         {
 
@@ -96,22 +118,6 @@ public class StationInformationActivity extends AppCompatActivity {
             benzeno.setText("0");
             humo.setText("0");
         }
-        /*if(Integer.parseInt(datos[2])>=10){
-            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(MainActivity.this)
-                    .setSmallIcon(android.R.drawable.stat_sys_warning)
-                    .setLargeIcon((((BitmapDrawable)getResources().getDrawable(R.drawable.nubes))).getBitmap())
-                    .setContentTitle("CUIDADO")
-                    .setContentText("Notificacion alerta")
-                    .setContentInfo("Temperatura alta")
-                    .setTicker("Alerta¡¡");
-
-            Intent noIntent = new Intent(MainActivity.this, MainActivity.class);
-            PendingIntent contIntent = PendingIntent.getActivity(MainActivity.this, 0, noIntent, 0);
-            mBuilder.setContentIntent(contIntent);
-
-            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            mNotificationManager.notify(6504, mBuilder.build());
-        }*/
     }
 
 

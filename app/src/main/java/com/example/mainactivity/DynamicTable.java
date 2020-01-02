@@ -1,6 +1,7 @@
 package com.example.mainactivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class DynamicTable {
+    private MainActivity mainActivity;
     private TableLayout tableLayout;
     private Context context;
     private String[] header;
@@ -23,8 +25,9 @@ public class DynamicTable {
     private int indexCell;
     private int indexRow;
 
-    public DynamicTable(TableLayout tableLayout, Context context)
+    public DynamicTable(MainActivity mainActivity, TableLayout tableLayout, Context context)
     {
+        this.mainActivity = mainActivity;
         this.tableLayout = tableLayout;
         this.context = context;
     }
@@ -89,10 +92,14 @@ public class DynamicTable {
                     Button buttonStation = new Button(context);
                     buttonStation.setText(info);
                     //Asignamose el Listener
+                    final String finalInfo = info;
                     buttonStation.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(context, " Listener botón " + v.getTag(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, " Listener botón " + v.getTag(), Toast.LENGTH_SHORT).show();
+                            Singleton.getInstance().setIdentificadorEstacion(finalInfo);
+                            mainActivity.startActivity(new Intent(mainActivity, StationInformationActivity.class));
+                            //mainActivity.finish();
                         }
                     });
                     buttonStation.setBackgroundColor(Color.parseColor("#333232"));

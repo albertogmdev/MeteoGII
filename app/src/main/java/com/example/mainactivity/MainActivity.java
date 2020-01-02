@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tableLayout = findViewById(R.id.tableestaciones);
         rows = new ArrayList<>();
-        DynamicTable dynamicTable = new DynamicTable(tableLayout, getApplicationContext());
+        DynamicTable dynamicTable = new DynamicTable(MainActivity.this, tableLayout, getApplicationContext());
         dynamicTable.addHeader(header);
         dynamicTable.addData(getData());
 
