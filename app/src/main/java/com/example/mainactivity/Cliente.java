@@ -40,23 +40,33 @@ public class Cliente implements Callable<String> {
 
             entrada = new DataInputStream(cliente.getInputStream());
             salida = new DataOutputStream(cliente.getOutputStream());
-            if(typeMessage.equals("Refresh") && idConexion.equals(""))
-            {
-                mensaje = "Refresh-All";
-            }
-            else if(typeMessage.equals("Refresh"))
-            {
-                mensaje = "Refresh-"+ this.idConexion;
-            }
-            else if(typeMessage.equals("Notify") && idConexion.equals(""))
-            {
-                mensaje = "Notify-All";
-            }
-            else        //Aviso de una única estación
-            {
-                mensaje = "Notify-" + this.idConexion;
-            }
 
+            //Refresh-idEstacion se especifica el id de la estacion que se quiere consultar y devuelve TODOS los datos
+            //idConexion tiene que ser idEstacion
+            if(typeMessage.equals("Refresh")){
+
+                mensaje += "Refresh-"+idConexion;
+            }
+            //Refresh-numeroEstaciones se especifica cuantas estaciones tenemos siendo el id de las estaciones de 1 a n, es decir
+            //si hay 5 estaciones hara las consultas para la estacion 1,2,3,4,5 devolviendo TODOS los datos
+            //idConexion tiene que ser numero de estaciones que tenemos
+            else if(typeMessage.equals("RefreshAll")){
+                mensaje += "RefreshAll-"+idConexion;
+
+            }
+            //RefreshTable-numeroEstaciones se especifica cuantas estaciones tenemos siendo el id de las estaciones de 1 a n, es decir
+            //si hay 5 estaciones hara las consultas para la estacion 1,2,3,4,5 devolviendo unicamente ID, ubicacion, temperatura, humedad y presion
+            //idConexion tiene que ser numero de estaciones que tenemos
+            else if(typeMessage.equals("RefreshTable")){
+                mensaje += "RefreshTable-"+idConexion;
+
+            }
+            //Notify-idEstacion se especifica el id de la estacion y nos devuelve un string con las alertas de esa estacion
+            //idConexion tiene que ser idEstacion
+            else if(typeMessage.equals("Notify")){
+                mensaje += "Notify-"+idConexion;
+
+            }
 
             salida.writeUTF(mensaje);
 
