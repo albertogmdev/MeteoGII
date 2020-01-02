@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private TableLayout tableLayout;
-    private String[] header = {"Identificador", "Ubicación", "Temperatura", "Tiempo", "Presión Atmosférica"};
+    private String[] header = Singleton.getInstance().getHeaderMainActivity();
     private ArrayList<String[]> rows;
 
 

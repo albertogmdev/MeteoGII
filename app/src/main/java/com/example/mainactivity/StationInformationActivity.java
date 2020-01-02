@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -53,6 +55,22 @@ public class StationInformationActivity extends AppCompatActivity {
         benzeno = findViewById(R.id.benzenoValor);
         humo = findViewById(R.id.humoValor);
         refresh(resultadoRefresh());
+
+        spinnerStation.addTextChangedListener(new TextWatcher()
+        {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Does not do any thing in this case
+            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Does not do any thing in this case
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Singleton.getInstance().setIdentificadorEstacion(spinnerStation.getText().toString());
+                refresh(resultadoRefresh());
+            }
+        });
     }
 
     public void refrescarButton(View v) {
