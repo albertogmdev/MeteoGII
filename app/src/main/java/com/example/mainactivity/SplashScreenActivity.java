@@ -26,7 +26,8 @@ public class SplashScreenActivity extends AppCompatActivity {
     public void startButton(View v)
     {
         //Log.e("HEY", "Problem2");
-        startActivity(new Intent(SplashScreenActivity.this, StationInformationActivity.class));
+        //startActivity(new Intent(SplashScreenActivity.this, StationInformationActivity.class));
+        startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
         super.onBackPressed();
         finish();
 

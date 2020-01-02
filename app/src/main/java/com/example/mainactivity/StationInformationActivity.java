@@ -68,9 +68,6 @@ public class StationInformationActivity extends AppCompatActivity {
 
             Log.e("HEY", consulta);
             String[] datos = consulta.split("//");
-            Log.e("HEY", datos[0]);
-            Log.e("HEY", datos[1]);
-            Log.e("HEY", datos[2]);
             temperatura.setText(String.format(datos[2]));
             humedad.setText(datos[3]);
             presion.setText(datos[4]);
@@ -83,6 +80,21 @@ public class StationInformationActivity extends AppCompatActivity {
             sulfuro.setText(datos[11]);
             benzeno.setText(datos[12]);
             humo.setText(datos[13]);
+        }
+        else
+        {
+            temperatura.setText("0");
+            humedad.setText("0");
+            presion.setText("0");
+            lluvia.setText("0");
+            luz.setText("0");
+            radiacion.setText("0");
+            anemometro.setText("0");
+            oxigeno.setText("0");
+            amoniaco.setText("0");
+            sulfuro.setText("0");
+            benzeno.setText("0");
+            humo.setText("0");
         }
         /*if(Integer.parseInt(datos[2])>=10){
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(MainActivity.this)

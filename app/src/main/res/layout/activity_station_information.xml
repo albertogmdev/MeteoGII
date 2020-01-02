@@ -620,7 +620,7 @@
                         android:id="@+id/graficas"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:background="@drawable/graficas"/>
+                        android:background="@drawable/graficas" />
                 </LinearLayout>
             </LinearLayout>
 
