@@ -2,6 +2,7 @@ package com.example.mainactivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -37,6 +38,7 @@ public class StationInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_station_information);
         //Log.e("HEY", "Problem2");
+        Singleton.getInstance().setEndConnectionThread(false);
         spinnerStation = findViewById(R.id.spinnerestacion);
         ArrayAdapter<String> adapterStations = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, stations);
         spinnerStation.setAdapter(adapterStations);
@@ -229,5 +231,13 @@ public class StationInformationActivity extends AppCompatActivity {
         es.shutdown();
 
         return result;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Singleton.getInstance().setEndConnectionThread(true);
+        startActivity(new Intent(StationInformationActivity.this, MainActivity.class));
+        finish();
     }
 }

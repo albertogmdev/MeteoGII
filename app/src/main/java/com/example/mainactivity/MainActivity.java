@@ -15,28 +15,31 @@ public class MainActivity extends AppCompatActivity {
     private TableLayout tableLayout;
     private String[] header = Singleton.getInstance().getHeaderMainActivity();
     private ArrayList<String[]> rows;
+    private HiloMainActivity hiloRefresh;
+    private HiloMainActivity hiloNotify;
+    private Monitor monitor;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Singleton.getInstance().setEndConnectionThread(false);
         tableLayout = findViewById(R.id.tableestaciones);
         rows = new ArrayList<>();
-        DynamicTable dynamicTable = new DynamicTable(MainActivity.this, tableLayout, getApplicationContext());
+        this.monitor = new Monitor();
+        DynamicTable dynamicTable = new DynamicTable(MainActivity.this, tableLayout, getApplicationContext(), monitor);
         dynamicTable.addHeader(header);
         dynamicTable.addData(getData());
-
+        this.hiloRefresh = new HiloMainActivity(String.valueOf(getNumberStations()), "RefreshTable", monitor,dynamicTable, MainActivity.this);
+        this.hiloNotify = new HiloMainActivity(String.valueOf(getNumberStations()), "NotifyAll", monitor, dynamicTable, MainActivity.this);
+        this.hiloRefresh.start();
+        //this.hiloNotify.start();
     }
 
-    private ArrayList<String[]> getData()
+    public  ArrayList<String[]> getData()
     {
         Singleton.getInstance().setCounterStations(getNumberStations());
-        //rows.add(new String[]{"1", "233'23\"45'34\"", "28ºC", "Soleado", "20Pa"});
-        //rows.add(new String[]{"2", "23'23\"45'34\"", "34ºC", "Nublado", "20Pa"});
-        //rows.add(new String[]{"3", "33'23\"45'34\"", "40ºC", "Lluvioso", "20Pa"});
-        //rows.add(new String[]{"4", "263'23\"45'34\"", "50ºC", "Noche", "20Pa"});
-        //rows.add(new String[]{"5", "133'23\"45'34\"", "20ºC", "Soleado", "20Pa"});
         String respuesta = resultadoRefresh();
         //Log.e("HEY", respuesta);
         String[] listaFilas = respuesta.split("\n");
@@ -47,7 +50,15 @@ public class MainActivity extends AppCompatActivity {
         return rows;
     }
 
-    public String resultadoRefresh() {
+    public ArrayList<String[]> getRows() {
+        return rows;
+    }
+
+    public void setRows(ArrayList<String[]> rows) {
+        this.rows = rows;
+    }
+
+    private String resultadoRefresh() {
 
         FutureTask task = new FutureTask(new Cliente(String.valueOf(Singleton.getInstance().getCounterStations()), "RefreshTable"));
 

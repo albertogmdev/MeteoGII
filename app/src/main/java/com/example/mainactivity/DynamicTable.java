@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static java.lang.Thread.sleep;
 
 public class DynamicTable {
     private MainActivity mainActivity;
@@ -22,15 +25,21 @@ public class DynamicTable {
     private ArrayList<String[]> data;
     private TableRow tableRow;
     private TextView textCell;
+    private Monitor monitor;
+    //private HiloMainActivity hiloRefresh;
 
     private int indexCell;
     private int indexRow;
 
-    public DynamicTable(MainActivity mainActivity, TableLayout tableLayout, Context context)
+    public DynamicTable(MainActivity mainActivity, TableLayout tableLayout, Context context, Monitor monitor)
     {
         this.mainActivity = mainActivity;
         this.tableLayout = tableLayout;
         this.context = context;
+        this.monitor = monitor;
+        //this.hiloRefresh = new HiloMainActivity(String.valueOf(mainActivity.getNumberStations()), "RefreshTable", monitor,DynamicTable.this, mainActivity);
+        //this.hiloRefresh.start();
+
         //Singleton.getInstance().resetCounterStations();
     }
 
@@ -105,8 +114,18 @@ public class DynamicTable {
                         public void onClick(View v) {
                             //Toast.makeText(context, " Listener botón " + v.getTag(), Toast.LENGTH_SHORT).show();
                             Singleton.getInstance().setIdentificadorEstacion(finalInfo);
-                            mainActivity.startActivity(new Intent(mainActivity, StationInformationActivity.class));
-                            //mainActivity.finish();
+                            Singleton.getInstance().setEndConnectionThread(true);
+                            int secs = 1; // Delay in seconds
+
+                            Utils.delay(secs, new Utils.DelayCallback() {
+                                @Override
+                                public void afterDelay() {
+                                    // Do something after delay
+                                    mainActivity.startActivity(new Intent(mainActivity, StationInformationActivity.class));
+                                    mainActivity.finish();
+                                }
+                            });
+
                         }
                     });
                     buttonStation.setBackgroundColor(Color.parseColor("#333232"));
@@ -141,5 +160,44 @@ public class DynamicTable {
         params.setMargins(1,1,1,1);
         params.weight = 1;
         return params;
+    }
+
+    public void resetTable()
+    {
+        mainActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                tableRow.removeAllViews();
+                tableLayout.removeAllViewsInLayout();
+                monitor.setStopThreadResetTable(false);
+                monitor.activeThread();
+            }
+        });
+    }
+
+    public void addHeader()
+    {
+        mainActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                addHeader(Singleton.getInstance().getHeaderMainActivity());
+                monitor.setStopThreadHeader(false);
+                monitor.activeThread();
+            }
+        });
+    }
+
+    public void addData()
+    {
+        mainActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                data = new ArrayList<>();
+                mainActivity.setRows(new ArrayList<String[]>());
+                addData(mainActivity.getData());
+                monitor.setStopThreadData(false);
+                monitor.activeThread();
+            }
+        });
     }
 }
