@@ -16,7 +16,14 @@ public class Cliente implements Callable<String> {
 
     String mensaje, respuesta, typeMessage;
 
-    private String idConexion;
+    private String idConexion, idConexion2;
+
+    public Cliente(String luz, String lluvia, String typeMesage){
+        this.idConexion2 = lluvia;
+        this.idConexion = luz;
+        this.typeMessage = typeMesage;
+        this.respuesta = "NULL";
+    }
 
     public Cliente(String id, String typeMesage){
         this.idConexion = id;
@@ -69,6 +76,14 @@ public class Cliente implements Callable<String> {
             //idConexion tiene que ser idEstacion
             else if(typeMessage.equals("Notify")){
                 mensaje = "Notify-"+idConexion;
+
+            }
+            //Weather-valorLuz-valorLluvia devuelve la imagen que hay que poner en el TextView Tiempo
+            //Los dos valores de lluvia y luz seran los resultantes de un refresh o refrehall no hay que hacer otra consulta
+            //cogerias directamente las posiciones 7 (luz) y 6(lluvia) de la consulta del refesh y las pasas como parametros para
+            //devolver la alerta y pasarla como contenido de la notificacion
+            else if(typeMessage.equals("Weather")){
+                mensaje = "Weather-"+idConexion+"-"+idConexion2;
 
             }
 

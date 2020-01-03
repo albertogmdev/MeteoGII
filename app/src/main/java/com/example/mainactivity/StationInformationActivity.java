@@ -1,8 +1,17 @@
 package com.example.mainactivity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,6 +20,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
@@ -26,11 +38,9 @@ public class StationInformationActivity extends AppCompatActivity {
     private TextView luz;
     private TextView anemometro;
     private TextView radiacion;
-    private TextView oxigeno;
-    private TextView amoniaco;
-    private TextView sulfuro;
-    private TextView benzeno;
-    private TextView humo;
+    private TextView sensacion;
+    private TextView calidadAire;
+    private TextView tiempoImagen;
     private static final String[] stations = Singleton.getInstance().getStations();
 
     @Override
@@ -49,12 +59,11 @@ public class StationInformationActivity extends AppCompatActivity {
         lluvia = findViewById(R.id.lluviaValor);
         luz = findViewById(R.id.luzValor);
         anemometro = findViewById(R.id.anemometroValor);
+        sensacion = findViewById(R.id.sensacionValor);
         radiacion = findViewById(R.id.radiacionValor);
-        oxigeno = findViewById(R.id.oxigenoValor);
-        amoniaco = findViewById(R.id.amoniacoValor);
-        sulfuro = findViewById(R.id.sulfuroValor);
-        benzeno = findViewById(R.id.benzenoValor);
-        humo = findViewById(R.id.humoValor);
+        calidadAire = findViewById(R.id.calidadValor);
+        tiempoImagen = findViewById(R.id.timepoValor);
+
         refresh(resultadoRefresh());
 
         spinnerStation.addTextChangedListener(new TextWatcher()
@@ -75,35 +84,36 @@ public class StationInformationActivity extends AppCompatActivity {
     }
 
     public void refrescarButton(View v) {
+
         String consulta = resultadoRefresh();
         refresh(consulta);
-
-        /*if(Integer.parseInt(datos[2])>=10){
-            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(MainActivity.this)
-                    .setSmallIcon(android.R.drawable.stat_sys_warning)
-                    .setLargeIcon((((BitmapDrawable)getResources().getDrawable(R.drawable.nubes))).getBitmap())
-                    .setContentTitle("CUIDADO")
-                    .setContentText("Notificacion alerta")
-                    .setContentInfo("Temperatura alta")
-                    .setTicker("Alerta¡¡");
-
-            Intent noIntent = new Intent(MainActivity.this, MainActivity.class);
-            PendingIntent contIntent = PendingIntent.getActivity(MainActivity.this, 0, noIntent, 0);
-            mBuilder.setContentIntent(contIntent);
-
-            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            mNotificationManager.notify(6504, mBuilder.build());
-        }*/
     }
 
     public void refresh(String consulta)
     {
         Log.e("HEY", consulta);
+
+        //La consulta tiene 0-ID_Estacion 1-Fecha_Hora 2-Temperatura 3-Humedad 4-Presion_Atmosferica 5-Cantidad_Lluvia
+        // 6-Nivel_Luz 7-Nivel_Radiacion 8-Valor_Sensor_Efecto 9-Sensacion_termica 10-Calidad_aire
         String[] datos = consulta.split("//");
+
+        //Habria que llamar al servidor con el token 6 y 5, luz y lluvia
+        String rutaTiempo = resultadoImage(String.format(datos[6]), String.format(datos[5]));
+
+        if(!rutaTiempo.isEmpty())
+        {
+            //Habria que cambiar este TextView por un ImageView
+            tiempoImagen.setText(String.format(rutaTiempo));
+        }
+        else
+        {
+            //Aqui poner lo que se quiera se puede poner una imagen de error o lo que sea
+            tiempoImagen.setText("NO IMAGE");
+        }
 
         if(!datos[2].equals("NULL"))
         {
-            temperatura.setText(String.format(datos[2]));
+            temperatura.setText(String.format(datos[2])+"ºC");
         }
         else
         {
@@ -112,7 +122,7 @@ public class StationInformationActivity extends AppCompatActivity {
 
         if(!datos[3].equals("NULL"))
         {
-            humedad.setText(String.format(datos[3]));
+            humedad.setText(String.format(datos[3])+"%");
         }
         else
         {
@@ -121,7 +131,7 @@ public class StationInformationActivity extends AppCompatActivity {
 
         if(!datos[4].equals("NULL"))
         {
-            presion.setText(datos[4]);
+            presion.setText(datos[4]+"Pa");
         }
         else
         {
@@ -166,48 +176,22 @@ public class StationInformationActivity extends AppCompatActivity {
 
         if(!datos[9].equals("NULL"))
         {
-            oxigeno.setText(String.format(datos[9]));
+            sensacion.setText(String.format(datos[9])+"ºC");
         }
         else
         {
-            oxigeno.setText("0");
+            sensacion.setText("0");
         }
 
         if(!datos[10].equals("NULL"))
         {
-            amoniaco.setText(String.format(datos[10]));
+            calidadAire.setText(String.format(datos[10]));
         }
         else
         {
-            amoniaco.setText("0");
+            calidadAire.setText("0");
         }
 
-        if(!datos[11].equals("NULL"))
-        {
-            sulfuro.setText(String.format(datos[11]));
-        }
-        else
-        {
-            sulfuro.setText("0");
-        }
-
-        if(!datos[12].equals("NULL"))
-        {
-            benzeno.setText(String.format(datos[12]));
-        }
-        else
-        {
-            benzeno.setText("0");
-        }
-
-        if(!datos[13].equals("NULL"))
-        {
-            humo.setText(String.format(datos[13]));
-        }
-        else
-        {
-            humo.setText("0");
-        }
     }
 
 
@@ -233,6 +217,77 @@ public class StationInformationActivity extends AppCompatActivity {
         return result;
     }
 
+    public String resultadoImage(String luz, String lluvia){
+
+        FutureTask task = new FutureTask(new Cliente(luz, lluvia, "Weather"));
+
+        ExecutorService es = Executors.newSingleThreadExecutor();
+        es.submit(task);
+
+        String result = "";
+
+        try {
+
+            result = task.get().toString();
+        } catch (Exception e) {
+
+            System.err.println(e);
+        }
+
+        es.shutdown();
+
+        return result;
+    }
+
+    public void invocador(View v){
+
+        Context contex = this.getApplicationContext();
+        //Aqui habria que ponerle titulo y la alerta de la notificacion, eso ya manejalo como tu quieras y pon estos metodos
+        //donde tu quieras tambien
+        notification("ALERTA DE TIEMPO", "notificacion de la app", contex);
+    }
+
+    //****************************************************************************************************
+    //CAMBIA EL CODIGO SI TE APETECE Y MIRA A VER PARA PONER QUE CUANDO SE PULSE VAYA A LA PAG DE LA TABLA
+    //****************************************************************************************************
+    public void notification(String title, String message, Context context) {
+
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        int notificationId = createID();
+        String channelId = "channel-id";
+        String channelName = "Channel Name";
+        int importance = NotificationManager.IMPORTANCE_HIGH;
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel mChannel = new NotificationChannel(
+                    channelId, channelName, importance);
+            notificationManager.createNotificationChannel(mChannel);
+        }
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, channelId)
+                .setSmallIcon(R.drawable.notificacion)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setVibrate(new long[]{100, 250})
+                .setLights(Color.YELLOW, 500, 5000)
+                .setAutoCancel(true)
+                .setColor(ContextCompat.getColor(context, R.color.colorPrimary));
+
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+        stackBuilder.addNextIntent(new Intent(context, MainActivity.class));
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
+        mBuilder.setContentIntent(resultPendingIntent);
+
+        notificationManager.notify(notificationId, mBuilder.build());
+    }
+
+    public int createID() {
+        Date now = new Date();
+        int id = Integer.parseInt(new SimpleDateFormat("ddHHmmss", Locale.FRENCH).format(now));
+        return id;
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -240,4 +295,6 @@ public class StationInformationActivity extends AppCompatActivity {
         startActivity(new Intent(StationInformationActivity.this, MainActivity.class));
         finish();
     }
+
+
 }
