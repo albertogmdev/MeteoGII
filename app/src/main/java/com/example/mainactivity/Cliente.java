@@ -77,6 +77,9 @@ public class Cliente implements Callable<String> {
             else if(typeMessage.equals("Notify")){
                 mensaje = "Notify-"+idConexion;
 
+            }//NotifyAll nos devuelve todas las alertas de las estaciones
+            else if(typeMessage.equals("NotifyAll")){
+                mensaje = "NotifyAll";
             }
             //Weather-valorLuz-valorLluvia devuelve la imagen que hay que poner en el TextView Tiempo
             //Los dos valores de lluvia y luz seran los resultantes de un refresh o refrehall no hay que hacer otra consulta

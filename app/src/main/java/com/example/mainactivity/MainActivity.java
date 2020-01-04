@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TableLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private HiloMainActivity hiloRefresh;
     private HiloMainActivity hiloNotify;
     private Monitor monitor;
+
+    private TextView notificaciones;
 
 
     @Override
@@ -34,18 +37,100 @@ public class MainActivity extends AppCompatActivity {
         this.hiloRefresh = new HiloMainActivity(String.valueOf(getNumberStations()), "RefreshTable", monitor,dynamicTable, MainActivity.this);
         this.hiloNotify = new HiloMainActivity(String.valueOf(getNumberStations()), "NotifyAll", monitor, dynamicTable, MainActivity.this);
         this.hiloRefresh.start();
+
+        notificaciones = findViewById(R.id.notifyAll);
+        notificarAll();
+
         //this.hiloNotify.start();
+    }
+
+    public void notificarAll(){
+
+        String alerta = resultadoNotifyAll();
+
+        if(!alerta.isEmpty()){
+            notificaciones.setText(alerta);
+        }else{
+            notificaciones.setText("No hay notifiacaciones");
+        }
+    }
+
+    public String resultadoNotifyAll(){
+
+        FutureTask task = new FutureTask(new Cliente("NotifyAll"));
+
+        ExecutorService es = Executors.newSingleThreadExecutor();
+        es.submit(task);
+
+        String result = "";
+
+        try {
+
+            result = task.get().toString();
+        } catch (Exception e) {
+
+            System.err.println(e);
+        }
+
+        es.shutdown();
+
+        return result;
     }
 
     public  ArrayList<String[]> getData()
     {
         Singleton.getInstance().setCounterStations(getNumberStations());
         String respuesta = resultadoRefresh();
-        //Log.e("HEY", respuesta);
+
         String[] listaFilas = respuesta.split("\n");
+
         for(int i = 0; i < listaFilas.length; i++)
         {
-            rows.add (listaFilas[i].split("//"));
+            String[] columnas = listaFilas[i].split("//");
+            //Array con las unidades
+            String nuevo[] = new String[5];
+
+            for(int j=0; j<columnas.length; j++){
+                switch (j){
+                    //id y ubicacion
+                    case 0:
+                    case 1:
+                        if(columnas[j].equals("NULL")){
+                            nuevo[j] = "0";
+                        }else{
+                            nuevo[j] = columnas[j];
+                        }
+                        break;
+                    //temperatura
+                    case 2:
+                        if(columnas[j].equals("NULL")){
+                            nuevo[j] = "0ºC";
+                        }else{
+                            nuevo[j] = columnas[j]+"ºC";
+                        }
+                        break;
+                    //humedad
+                    case 3:
+                        if(columnas[j].equals("NULL")){
+                            nuevo[j] = "0%";
+                        }else{
+                            nuevo[j] = columnas[j]+"%";
+                        }
+                        break;
+                    //presion
+                    case 4:
+                        if(columnas[j].equals("NULL")){
+                            nuevo[j] = "0Pa";
+                        }else{
+                            nuevo[j] = columnas[j]+"Pa";
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            rows.add(nuevo);
         }
 
         return rows;

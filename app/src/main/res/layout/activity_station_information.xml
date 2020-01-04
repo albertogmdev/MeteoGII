@@ -74,7 +74,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -93,8 +94,8 @@
                         android:id="@+id/tiempo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tiempo"
-                        android:textAlignment="viewStart"
+                        android:text="TIEMPO"
+                        android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -103,11 +104,11 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:layout_weight="1">
-                    <TextView
-                        android:id="@+id/timepoValor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Soleado"
+                    <ImageView
+                        android:id="@+id/tiempoValor"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@drawable/refrescar"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp"/>
                 </LinearLayout>
@@ -130,8 +131,8 @@
                         android:id="@+id/temperatura"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Temperatura"
-                        android:textAlignment="viewStart"
+                        android:text="TEMPERATURA"
+                        android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -167,8 +168,8 @@
                         android:id="@+id/humedad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Humedad"
-                        android:textAlignment="viewStart"
+                        android:text="HUMEDAD"
+                        android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -204,8 +205,8 @@
                         android:id="@+id/sensacion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sensacion térmica"
-                        android:textAlignment="viewStart"
+                        android:text="SENSACION \nTERMICA"
+                        android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -241,8 +242,8 @@
                         android:id="@+id/presion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Presión atm."
-                        android:textAlignment="viewStart"
+                        android:text="PRESION \nATMOSFERICA"
+                        android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -279,8 +280,8 @@
                         android:id="@+id/lluvia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lluvia"
-                        android:textAlignment="viewStart"
+                        android:text="LLUVIA"
+                        android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -316,8 +317,8 @@
                         android:id="@+id/luz"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nivel de Luz"
-                        android:textAlignment="viewStart"
+                        android:text="NIVEL DE LUZ"
+                        android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -353,8 +354,8 @@
                         android:id="@+id/anemometro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Anemómetro"
-                        android:textAlignment="viewStart"
+                        android:text="ANEMOMETRO"
+                        android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -390,8 +391,8 @@
                         android:id="@+id/aire"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Calidad de aire"
-                        android:textAlignment="viewStart"
+                        android:text="CALIDAD DEL \nAIRE"
+                        android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -427,8 +428,8 @@
                         android:id="@+id/radiacion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nivel de Radiación"
-                        android:textAlignment="viewStart"
+                        android:text="NIVEL DE \nRADIACION"
+                        android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -452,7 +453,8 @@
                 android:layout_height="fill_parent"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="25dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"

@@ -21,4 +21,29 @@ public class graficasActivity extends AppCompatActivity {
         startActivity(new Intent(graficasActivity.this, StationInformationActivity.class));
         finish();
     }
+
+    //*************************************************************
+    //CODIGO DE LAS GRAFICAS ver Pagina web: https://platzi.com/tutoriales/1049-android/2662-como-crear-graficos-en-android/
+    //*************************************************************
+    /*private LineChart lineChart;
+    private LineDataSet lineDataSet;
+
+    // Enlazamos al XML
+    lineChart = view.findViewById(R.id.lineChart);
+
+    // Creamos un set de datos
+    ArrayList<Entry> lineEntries = new ArrayList<Entry>();
+     for (int i = 0; i<11; i++){
+                float y = (int) (Math.random() * 8) + 1;
+                lineEntries.add(new Entry((float) i,(float)y));
+            }
+
+    // Unimos los datos al data set
+    lineDataSet = new LineDataSet(lineEntries, "Platzi");
+
+    // Asociamos al gráfico
+    LineData lineData = new LineData();
+    lineData.addDataSet(lineDataSet);
+    lineChart.setData(lineData);*/
+
 }

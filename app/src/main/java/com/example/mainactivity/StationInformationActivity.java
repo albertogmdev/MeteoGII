@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -42,7 +43,7 @@ public class StationInformationActivity extends AppCompatActivity {
     private TextView radiacion;
     private TextView sensacion;
     private TextView calidadAire;
-    private TextView tiempoImagen;
+    private ImageView tiempoImagen;
     private ImageButton graficasButton;
     private static final String[] stations = Singleton.getInstance().getStations();
 
@@ -65,9 +66,10 @@ public class StationInformationActivity extends AppCompatActivity {
         sensacion = findViewById(R.id.sensacionValor);
         radiacion = findViewById(R.id.radiacionValor);
         calidadAire = findViewById(R.id.calidadValor);
-        tiempoImagen = findViewById(R.id.timepoValor);
+        tiempoImagen = findViewById(R.id.tiempoValor);
         graficasButton = findViewById(R.id.graficas);
 
+        notifyStation();
         refresh(resultadoRefresh());
 
         spinnerStation.addTextChangedListener(new TextWatcher()
@@ -139,12 +141,30 @@ public class StationInformationActivity extends AppCompatActivity {
         if(!rutaTiempo.isEmpty())
         {
             //Habria que cambiar este TextView por un ImageView
-            tiempoImagen.setText(String.format(rutaTiempo));
+            switch(rutaTiempo){
+                case "diaLluvioso.png":
+                    tiempoImagen.setImageResource(R.drawable.dialluvioso);
+                    break;
+                case "soleado.png":
+                    tiempoImagen.setImageResource(R.drawable.soleado);
+                    break;
+                case "nocheLluviosa.png":
+                    tiempoImagen.setImageResource(R.drawable.nochelluviosa);
+                    break;
+                case "noche.png":
+                    tiempoImagen.setImageResource(R.drawable.noche);
+                    break;
+                case "nublado.png":
+                    tiempoImagen.setImageResource(R.drawable.nublado);
+                    break;
+                default :
+                    break;
+            }
         }
         else
         {
             //Aqui poner lo que se quiera se puede poner una imagen de error o lo que sea
-            tiempoImagen.setText("NO IMAGE");
+            tiempoImagen.setImageResource(R.drawable.refrescar);
         }
 
         if(!datos[2].equals("NULL"))
@@ -275,18 +295,42 @@ public class StationInformationActivity extends AppCompatActivity {
         return result;
     }
 
-    public void invocador(View v){
+    public void notifyStation(){
 
-        Context contex = this.getApplicationContext();
-        //Aqui habria que ponerle titulo y la alerta de la notificacion, eso ya manejalo como tu quieras y pon estos metodos
-        //donde tu quieras tambien
-        notification("ALERTA DE TIEMPO", "notificacion de la app", contex);
+        String alertaEstacion = resultadoNotify();
+
+        if(!alertaEstacion.isEmpty()){
+            crearNotificacion("!ALERTA¡ Estación "+ spinnerStation.getText().toString(), alertaEstacion, getApplicationContext());
+        }
+
+    }
+
+    public String resultadoNotify(){
+
+        FutureTask task = new FutureTask(new Cliente(spinnerStation.getText().toString(), "Notify"));
+
+        ExecutorService es = Executors.newSingleThreadExecutor();
+        es.submit(task);
+
+        String result = "NULL";
+
+        try {
+
+            result = task.get().toString();
+        } catch (Exception e) {
+
+            System.err.println(e);
+        }
+
+        es.shutdown();
+
+        return result;
     }
 
     //****************************************************************************************************
     //CAMBIA EL CODIGO SI TE APETECE Y MIRA A VER PARA PONER QUE CUANDO SE PULSE VAYA A LA PAG DE LA TABLA
     //****************************************************************************************************
-    public void notification(String title, String message, Context context) {
+    public void crearNotificacion(String title, String message, Context context) {
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
