@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".graficasActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".StationInformationActivity" />
         <activity
             android:name=".SplashScreenActivity"

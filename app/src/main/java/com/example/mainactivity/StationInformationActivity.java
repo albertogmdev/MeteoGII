@@ -18,6 +18,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -41,6 +43,7 @@ public class StationInformationActivity extends AppCompatActivity {
     private TextView sensacion;
     private TextView calidadAire;
     private TextView tiempoImagen;
+    private ImageButton graficasButton;
     private static final String[] stations = Singleton.getInstance().getStations();
 
     @Override
@@ -63,6 +66,7 @@ public class StationInformationActivity extends AppCompatActivity {
         radiacion = findViewById(R.id.radiacionValor);
         calidadAire = findViewById(R.id.calidadValor);
         tiempoImagen = findViewById(R.id.timepoValor);
+        graficasButton = findViewById(R.id.graficas);
 
         refresh(resultadoRefresh());
 
@@ -81,6 +85,38 @@ public class StationInformationActivity extends AppCompatActivity {
                 refresh(resultadoRefresh());
             }
         });
+    }
+
+    //No se como hacer que vaya a la siguiente pestaña
+    public void graficasBoton(View v){
+
+        /*Singleton.getInstance().addStation("1");
+        //Asignamose el Listener
+        final String finalInfo = "1";
+        graficasButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(context, " Listener botón " + v.getTag(), Toast.LENGTH_SHORT).show();
+                Singleton.getInstance().setIdentificadorEstacion(finalInfo);
+                Singleton.getInstance().setEndConnectionThread(true);
+                int secs = 1; // Delay in seconds
+
+                Utils.delay(secs, new Utils.DelayCallback() {
+                    @Override
+                    public void afterDelay() {
+                        // Do something after delay
+                        startActivity(new Intent(StationInformationActivity.this, StationInformationActivity.class));
+                        finish();
+                    }
+                });
+
+            }
+        });*/
+
+        //startActivity(new Intent(StationInformationActivity.this, graficasActivity.class));
+        //finish();
+        //Intent intent= new Intent (this, graficasActivity.class);
+        //this.startActivity(intent);
     }
 
     public void refrescarButton(View v) {
