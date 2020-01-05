@@ -338,9 +338,7 @@ public class StationInformationActivity extends AppCompatActivity {
         return result;
     }
 
-    //****************************************************************************************************
-    //CAMBIA EL CODIGO SI TE APETECE Y MIRA A VER PARA PONER QUE CUANDO SE PULSE VAYA A LA PAG DE LA TABLA
-    //****************************************************************************************************
+
     public void crearNotificacion(String title, String message, Context context) {
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -366,7 +364,7 @@ public class StationInformationActivity extends AppCompatActivity {
                 .setColor(ContextCompat.getColor(context, R.color.colorPrimary));
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        stackBuilder.addNextIntent(new Intent(context, MainActivity.class));
+        stackBuilder.addNextIntent(new Intent(context, StationInformationActivity.class));
         PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
         mBuilder.setContentIntent(resultPendingIntent);
 

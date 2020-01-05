@@ -157,7 +157,8 @@ public class DynamicTable {
     private TableRow.LayoutParams newTableRowParams()
     {
         TableRow.LayoutParams params = new TableRow.LayoutParams();
-        params.setMargins(1,1,1,1);
+        params.setMargins(5,1,5,1);
+
         params.weight = 1;
         return params;
     }
