@@ -1,9 +1,12 @@
-package com.example.mainactivity;
+package com.example.mainactivity.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.mainactivity.R;
+import com.example.mainactivity.Singleton;
 
 public class graficasActivity extends AppCompatActivity {
 

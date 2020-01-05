@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -11,14 +11,12 @@ import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,6 +28,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
+import com.example.mainactivity.Cliente;
+import com.example.mainactivity.R;
+import com.example.mainactivity.Singleton;
 import com.weiwangcn.betterspinner.library.BetterSpinner;
 
 public class StationInformationActivity extends AppCompatActivity {
@@ -46,6 +47,7 @@ public class StationInformationActivity extends AppCompatActivity {
     private ImageView tiempoImagen;
     private ImageButton graficasButton;
     private static final String[] stations = Singleton.getInstance().getStations();
+    private TextView[] listTextView = {null, null, null, null, null, null, null, null, null};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,15 @@ public class StationInformationActivity extends AppCompatActivity {
         calidadAire = findViewById(R.id.calidadValor);
         tiempoImagen = findViewById(R.id.tiempoValor);
         graficasButton = findViewById(R.id.graficas);
+        listTextView[0] = temperatura;
+        listTextView[1] = humedad;
+        listTextView[2] = presion;
+        listTextView[3] = lluvia;
+        listTextView[4] = luz;
+        listTextView[5] = anemometro;
+        listTextView[6] = radiacion;
+        listTextView[7] = sensacion;
+        listTextView[8] = calidadAire;
 
         notifyStation();
         refresh(resultadoRefresh());
@@ -87,6 +98,7 @@ public class StationInformationActivity extends AppCompatActivity {
                 refresh(resultadoRefresh());
             }
         });
+
     }
 
     //No se como hacer que vaya a la siguiente pestaña

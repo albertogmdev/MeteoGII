@@ -1,7 +1,13 @@
-package com.example.mainactivity;
+package com.example.mainactivity.Threads;
 
-import android.util.Log;
 import android.widget.TextView;
+
+import com.example.mainactivity.Activities.MainActivity;
+import com.example.mainactivity.Cliente;
+import com.example.mainactivity.DynamicTable;
+import com.example.mainactivity.Monitor;
+import com.example.mainactivity.Singleton;
+import com.example.mainactivity.Timer;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

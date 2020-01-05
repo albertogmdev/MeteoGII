@@ -1,11 +1,17 @@
-package com.example.mainactivity;
+package com.example.mainactivity.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TableLayout;
 import android.widget.TextView;
+
+import com.example.mainactivity.Cliente;
+import com.example.mainactivity.DynamicTable;
+import com.example.mainactivity.Threads.HiloMainActivity;
+import com.example.mainactivity.Monitor;
+import com.example.mainactivity.R;
+import com.example.mainactivity.Singleton;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;

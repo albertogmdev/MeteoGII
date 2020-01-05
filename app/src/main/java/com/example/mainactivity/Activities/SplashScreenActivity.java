@@ -1,14 +1,13 @@
-package com.example.mainactivity;
+package com.example.mainactivity.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import java.util.concurrent.*;
+import com.example.mainactivity.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
