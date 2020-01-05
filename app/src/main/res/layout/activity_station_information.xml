@@ -108,7 +108,7 @@
                         android:id="@+id/tiempoValor"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:src="@drawable/refrescar"
+                        android:src="@drawable/icon_weather"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp"/>
                 </LinearLayout>

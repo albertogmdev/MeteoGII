@@ -29,4 +29,5 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.weiwangcn.betterspinner:library:1.1.0'
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
 }

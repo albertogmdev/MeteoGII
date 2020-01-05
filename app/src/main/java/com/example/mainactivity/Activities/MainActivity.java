@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         rows = new ArrayList<>();
         this.monitor = new Monitor();
         DynamicTable dynamicTable = new DynamicTable(MainActivity.this, tableLayout, getApplicationContext(), monitor);
-        dynamicTable.addHeader(header);
-        dynamicTable.addData(getData());
+        dynamicTable.addHeaderMainActivity(header);
+        dynamicTable.addDataMainActivity(getData());
         this.hiloRefresh = new ThreadMainActivity(String.valueOf(getNumberStations()), "RefreshTable", monitor,dynamicTable, MainActivity.this);
         notificaciones = findViewById(R.id.notifyAll);
         notificarAll();
@@ -191,6 +191,8 @@ public class MainActivity extends AppCompatActivity {
         es.shutdown();
         return Integer.parseInt(result);
     }
+
+
 
 
 }

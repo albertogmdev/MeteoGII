@@ -16,138 +16,176 @@
             android:id="@+id/titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Gráficas"
+            android:text="@string/graficas"
             android:textSize="35sp"
             android:textColor="@color/colorLetra"
             android:gravity="center">
 
         </TextView>
     </LinearLayout>
-
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:text="@string/seleccione_la_grafica_que_desea_visualizar"
+            android:textSize="30sp"
+            android:textColor="@color/colorLetra">
+
+        </TextView>
+
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <!--- GRAFICA temperatura -->
             <LinearLayout
-                android:id="@+id/blockTemperatura"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-                <!--- Label para temperatura -->
+                android:layout_marginBottom="20dp">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:layout_weight="1">
-                    <TextView
-                        android:id="@+id/temperaturaG"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/temperatura"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/colorLetra"
-                        android:textSize="20sp" />
-                </LinearLayout>
-                <!--- Grafica -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:layout_weight="1">
-
-                    <com.github.mikephil.charting.charts.LineChart
-                        android:id="@+id/graficaTemperatura"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="200dp" />
-                </LinearLayout>
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:src="@drawable/icon_weather"
+                            android:background="@color/colorLetra">
 
+                        </ImageView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/temperatura"
+                            android:textSize="20sp"
+                            android:onClick="temperatureButton">
+
+                        </Button>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:src="@drawable/icon_humidity"
+                            android:background="@color/colorLetra">
+
+                        </ImageView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/humedad"
+                            android:textSize="20sp"
+                            android:onClick="humidityButton">
+
+                        </Button>
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
-            <!--- GRAFICA humedad -->
+
             <LinearLayout
-                android:id="@+id/blockHumedad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-                <!--- Label para humedad -->
+                android:layout_marginBottom="20dp">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:layout_weight="1">
-                    <TextView
-                        android:id="@+id/humedadG"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/humedad"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/colorLetra"
-                        android:textSize="20sp" />
-                </LinearLayout>
-                <!--- Grafica -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:layout_weight="1">
-
-                    <com.github.mikephil.charting.charts.LineChart
-                        android:id="@+id/graficaHumedad"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="200dp" />
-                </LinearLayout>
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:src="@drawable/icon_weather"
+                            android:background="@color/colorLetra">
 
+                        </ImageView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tiempo_atmosferico"
+                            android:textSize="20sp"
+                            android:onClick="weatherButton">
+
+                        </Button>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:src="@drawable/icon_radiation"
+                            android:background="@color/colorLetra">
+
+                        </ImageView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nivel_de_radiacion"
+                            android:textSize="20sp"
+                            android:onClick="radiationButton">
+
+                        </Button>
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
-            <!--- GRAFICA presion -->
-            <LinearLayout
-                android:id="@+id/blockPresion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-                <!--- Label para presion -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:layout_weight="1">
-                    <TextView
-                        android:id="@+id/presionG"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/presion"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/colorLetra"
-                        android:textSize="20sp" />
-                </LinearLayout>
-                <!--- Grafica -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:layout_weight="1">
 
-                    <com.github.mikephil.charting.charts.LineChart
-                        android:id="@+id/graficaPresion"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp" />
-                </LinearLayout>
-
-            </LinearLayout>
 
         </LinearLayout>
 

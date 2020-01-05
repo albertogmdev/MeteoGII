@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.mainactivity.Activities.MainActivity;
 import com.example.mainactivity.Activities.StationInformationActivity;
+import com.example.mainactivity.Activities.WeatherGraphStationActivity;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,7 @@ import static java.lang.Thread.sleep;
 
 public class DynamicTable {
     private MainActivity mainActivity;
+    private WeatherGraphStationActivity weatherGraphStation;
     private TableLayout tableLayout;
     private Context context;
     private String[] header;
@@ -43,8 +45,20 @@ public class DynamicTable {
         //Singleton.getInstance().resetCounterStations();
     }
 
+    public DynamicTable(WeatherGraphStationActivity weatherGraphStation, TableLayout tableLayout, Context context, Monitor monitor)
+    {
+        this.weatherGraphStation = weatherGraphStation;
+        this.tableLayout = tableLayout;
+        this.context = context;
+        this.monitor = monitor;
+        //this.hiloRefresh = new ThreadMainActivity(String.valueOf(mainActivity.getNumberStations()), "RefreshTable", monitor,DynamicTable.this, mainActivity);
+        //this.hiloRefresh.start();
+
+        //Singleton.getInstance().resetCounterStations();
+    }
+
     /**Incluir la cabecera de la tabla dinámica*/
-    public void addHeader(String[] header)
+    public void addHeaderMainActivity(String[] header)
     {
         this.header = header;
         createHeader();
@@ -52,7 +66,7 @@ public class DynamicTable {
     }
 
     /**Incluir los datos de la tabla dinámica*/
-    public void addData(ArrayList<String[]> data)
+    public void addDataMainActivity(ArrayList<String[]> data)
     {
         this.data = data;
         //Singleton.getInstance().resetCounterStations();
@@ -101,7 +115,7 @@ public class DynamicTable {
             {
                 newCell();
                 String[] rows = data.get(indexRow);
-                if(indexCell == 0)
+                if(indexCell == 0 && !Singleton.getInstance().getTypeGraph().equals("WeatherGraph"))
                 {
                     info = rows[indexCell];
                     Button buttonStation = new Button(context);
@@ -154,7 +168,7 @@ public class DynamicTable {
         return params;
     }
 
-    public void resetTable()
+    public void resetTableMainActivity()
     {
         mainActivity.runOnUiThread(new Runnable() {
             @Override
@@ -167,19 +181,19 @@ public class DynamicTable {
         });
     }
 
-    public void addHeader()
+    public void addHeaderMainActivity()
     {
         mainActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                addHeader(Singleton.getInstance().getHeaderMainActivity());
+                addHeaderMainActivity(Singleton.getInstance().getHeaderMainActivity());
                 monitor.setStopThreadHeader(false);
                 monitor.activeThread();
             }
         });
     }
 
-    public void addData()
+    public void addDataMainActivity()
     {
         mainActivity.runOnUiThread(new Runnable() {
             @Override
@@ -187,7 +201,47 @@ public class DynamicTable {
                 data = new ArrayList<>();
                 mainActivity.setRows(new ArrayList<String[]>());
                 Singleton.getInstance().resetStations();
-                addData(mainActivity.getData());
+                addDataMainActivity(mainActivity.getData());
+                monitor.setStopThreadData(false);
+                monitor.activeThread();
+            }
+        });
+    }
+
+    public void resetTableWeatherGraphStationActivity()
+    {
+        weatherGraphStation.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                tableRow.removeAllViews();
+                tableLayout.removeAllViewsInLayout();
+                monitor.setStopThreadResetTable(false);
+                monitor.activeThread();
+            }
+        });
+    }
+
+    public void addHeaderWeatherGraphStationActivity()
+    {
+        weatherGraphStation.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                addHeaderMainActivity(Singleton.getInstance().getHeaderWeatherGraphStationActivity());
+                monitor.setStopThreadHeader(false);
+                monitor.activeThread();
+            }
+        });
+    }
+
+    public void addDataWeatherGraphStationActivity()
+    {
+        weatherGraphStation.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                data = new ArrayList<>();
+                weatherGraphStation.setRows(new ArrayList<String[]>());
+                Singleton.getInstance().resetStations();
+                addDataMainActivity(mainActivity.getData());
                 monitor.setStopThreadData(false);
                 monitor.activeThread();
             }

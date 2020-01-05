@@ -4,9 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
+import com.anychart.AnyChart;
+import com.anychart.AnyChartView;
+import com.anychart.chart.common.dataentry.DataEntry;
+import com.anychart.chart.common.dataentry.ValueDataEntry;
+import com.anychart.charts.Pie;
 import com.example.mainactivity.R;
 import com.example.mainactivity.Singleton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StationGraphicsActivity extends AppCompatActivity {
 
@@ -25,28 +34,27 @@ public class StationGraphicsActivity extends AppCompatActivity {
         finish();
     }
 
-    //*************************************************************
-    //CODIGO DE LAS GRAFICAS ver Pagina web: https://platzi.com/tutoriales/1049-android/2662-como-crear-graficos-en-android/
-    //*************************************************************
-    /*private LineChart lineChart;
-    private LineDataSet lineDataSet;
+    public void temperatureButton(View view) {
+        Singleton.getInstance().setTypeGraph("TemperatureGraph");
+        startActivity(new Intent(StationGraphicsActivity.this, GraphStationActivity.class));
+        finish();
+    }
 
-    // Enlazamos al XML
-    lineChart = view.findViewById(R.id.lineChart);
+    public void humidityButton(View view) {
+        Singleton.getInstance().setTypeGraph("HumidityGraph");
+        startActivity(new Intent(StationGraphicsActivity.this, GraphStationActivity.class));
+        finish();
+    }
 
-    // Creamos un set de datos
-    ArrayList<Entry> lineEntries = new ArrayList<Entry>();
-     for (int i = 0; i<11; i++){
-                float y = (int) (Math.random() * 8) + 1;
-                lineEntries.add(new Entry((float) i,(float)y));
-            }
+    public void weatherButton(View view) {
+        Singleton.getInstance().setTypeGraph("WeatherGraph");
+        startActivity(new Intent(StationGraphicsActivity.this, WeatherGraphStationActivity.class));
+        finish();
+    }
 
-    // Unimos los datos al data set
-    lineDataSet = new LineDataSet(lineEntries, "Platzi");
-
-    // Asociamos al gráfico
-    LineData lineData = new LineData();
-    lineData.addDataSet(lineDataSet);
-    lineChart.setData(lineData);*/
-
+    public void radiationButton(View view) {
+        Singleton.getInstance().setTypeGraph("RadiationGraph");
+        startActivity(new Intent(StationGraphicsActivity.this, GraphStationActivity.class));
+        finish();
+    }
 }

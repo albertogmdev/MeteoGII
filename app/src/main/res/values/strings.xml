@@ -2,7 +2,7 @@
     <string name="app_name">MeteoGII</string>
     <string name="temperatura">Temperatura</string>
     <string name="humedad">Humedad</string>
-    <string name="presion">Presion</string>
+    <string name="presion">Presión</string>
     <string name="bienvenid_a_meteogii">Bienvenid@ a METEOGII</string>
     <string name="empezar">EMPEZAR</string>
     <string name="estacion">Estación</string>
@@ -14,4 +14,7 @@
     <string name="anemometro">Anemómetro</string>
     <string name="calidad_del_aire">Calidad del Aire</string>
     <string name="nivel_de_radiacion">Nivel de Radiación</string>
+    <string name="seleccione_la_grafica_que_desea_visualizar">Seleccione la gráfica que desea visualizar:</string>
+    <string name="tiempo_atmosferico">Tiempo Atmosférico</string>
+    <string name="graficas">Gráficas</string>
 </resources>

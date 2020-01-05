@@ -8,10 +8,13 @@ public class Singleton {
     private static Singleton instance;
     private String identificadorEstacion;
     private String[] headerMainActivity = {"Identificador", "Ubicación", "Temperatura", "Humedad", "Presión Atmosférica"};
+    private String[] headerWeatherGraphStationActivity = {"Fecha", "Tiempo Atm."};
     private ArrayList<String> stations = new ArrayList<>();
     private int counterStations;
     private boolean endConnectionThreadMainActivity;
     private boolean endConnectionThreadStationActivity;
+    private boolean endConnectionThreadGraphActivity;
+    private String typeGraph;
 
     public static synchronized Singleton getInstance() {
         if (instance == null) {
@@ -24,9 +27,11 @@ public class Singleton {
     {
 
         this.identificadorEstacion = "";
+        this.typeGraph = "";
         this.counterStations = 0;
         this.endConnectionThreadMainActivity = false;
         this.endConnectionThreadStationActivity = false;
+        this.endConnectionThreadGraphActivity = false;
     }
 
     public String getIdentificadorEstacion() {
@@ -96,5 +101,33 @@ public class Singleton {
 
     public void setEndConnectionThreadStationActivity(boolean endConnectionThreadStationActivity) {
         this.endConnectionThreadStationActivity = endConnectionThreadStationActivity;
+    }
+
+    public String getTypeGraph() {
+        return typeGraph;
+    }
+
+    public void setTypeGraph(String typeGraph) {
+        this.typeGraph = typeGraph;
+    }
+
+    public boolean isEndConnectionThreadGraphActivity() {
+        return endConnectionThreadGraphActivity;
+    }
+
+    public void setEndConnectionThreadGraphActivity(boolean endConnectionThreadGraphActivity) {
+        this.endConnectionThreadGraphActivity = endConnectionThreadGraphActivity;
+    }
+
+    public void setStations(ArrayList<String> stations) {
+        this.stations = stations;
+    }
+
+    public String[] getHeaderWeatherGraphStationActivity() {
+        return headerWeatherGraphStationActivity;
+    }
+
+    public void setHeaderWeatherGraphStationActivity(String[] headerWeatherGraphStationActivity) {
+        this.headerWeatherGraphStationActivity = headerWeatherGraphStationActivity;
     }
 }

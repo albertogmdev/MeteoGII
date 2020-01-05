@@ -53,13 +53,13 @@ public class ThreadMainActivity extends Thread{
             this.idEstacion = getNumberStations();
             if(typeMessage.equals("RefreshTable"))
             {
-                dynamicTable.resetTable();
+                dynamicTable.resetTableMainActivity();
                 monitor.makeThreadWaitResetTable();
                 monitor.setStopThreadResetTable(true);
-                dynamicTable.addHeader();
+                dynamicTable.addHeaderMainActivity();
                 monitor.makeThreadWaitHeader();
                 monitor.setStopThreadHeader(true);
-                dynamicTable.addData();
+                dynamicTable.addDataMainActivity();
                 monitor.makeThreadWaitData();
                 monitor.setStopThreadData(true);
 
@@ -76,28 +76,6 @@ public class ThreadMainActivity extends Thread{
 
         }
     }
-
-    /*public String executeCommand()
-    {
-        FutureTask task = new FutureTask(new Cliente(this.idEstacion, this.typeMessage));
-
-        ExecutorService es = Executors.newSingleThreadExecutor();
-        es.submit(task);
-
-        String result = "NULL";
-
-        try {
-
-            result = task.get().toString();
-        } catch (Exception e) {
-
-            System.err.println(e);
-        }
-
-        es.shutdown();
-
-        return result;
-    }*/
 
     public String getNumberStations() {
 
@@ -120,21 +98,5 @@ public class ThreadMainActivity extends Thread{
         es.shutdown();
         return result;
     }
-
-    /*public void notificarAll(){
-        mainActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                String alerta = mainActivity.resultadoNotifyAll();
-                if(!alerta.isEmpty()){
-                    notificaciones.setText(alerta);
-                }else{
-                    notificaciones.setText("No hay notifiacaciones");
-                }
-            }
-        });
-    }*/
-
-
 
 }

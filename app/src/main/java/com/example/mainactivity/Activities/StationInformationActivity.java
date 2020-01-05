@@ -107,34 +107,6 @@ public class StationInformationActivity extends AppCompatActivity {
         //Singleton.getInstance().setEndConnectionThreadStationActivity(true);
         startActivity(new Intent(StationInformationActivity.this, StationGraphicsActivity.class));
         finish();
-
-        /*Singleton.getInstance().addStation("1");
-        //Asignamose el Listener
-        final String finalInfo = "1";
-        graficasButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(context, " Listener botón " + v.getTag(), Toast.LENGTH_SHORT).show();
-                Singleton.getInstance().setIdentificadorEstacion(finalInfo);
-                Singleton.getInstance().setEndConnectionThread(true);
-                int secs = 1; // Delay in seconds
-
-                Utils.delay(secs, new Utils.DelayCallback() {
-                    @Override
-                    public void afterDelay() {
-                        // Do something after delay
-                        startActivity(new Intent(StationInformationActivity.this, StationInformationActivity.class));
-                        finish();
-                    }
-                });
-
-            }
-        });*/
-
-        //startActivity(new Intent(StationInformationActivity.this, GraficasActivity.class));
-        //finish();
-        //Intent intent= new Intent (this, GraficasActivity.class);
-        //this.startActivity(intent);
     }
 
     public void refrescarButton(View v) {
