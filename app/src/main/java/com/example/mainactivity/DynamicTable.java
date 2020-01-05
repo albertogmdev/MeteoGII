@@ -194,6 +194,7 @@ public class DynamicTable {
             public void run() {
                 data = new ArrayList<>();
                 mainActivity.setRows(new ArrayList<String[]>());
+                Singleton.getInstance().resetStations();
                 addData(mainActivity.getData());
                 monitor.setStopThreadData(false);
                 monitor.activeThread();

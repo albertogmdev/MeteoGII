@@ -35,13 +35,11 @@ public class MainActivity extends AppCompatActivity {
         dynamicTable.addHeader(header);
         dynamicTable.addData(getData());
         this.hiloRefresh = new HiloMainActivity(String.valueOf(getNumberStations()), "RefreshTable", monitor,dynamicTable, MainActivity.this);
-        this.hiloNotify = new HiloMainActivity(String.valueOf(getNumberStations()), "NotifyAll", monitor, dynamicTable, MainActivity.this);
-        this.hiloRefresh.start();
-
         notificaciones = findViewById(R.id.notifyAll);
         notificarAll();
-
-        //this.hiloNotify.start();
+        this.hiloNotify = new HiloMainActivity(String.valueOf(getNumberStations()), "NotifyAll", monitor, notificaciones, MainActivity.this);
+        this.hiloRefresh.start();
+        this.hiloNotify.start();
     }
 
     public void notificarAll(){

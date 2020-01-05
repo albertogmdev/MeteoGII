@@ -57,6 +57,11 @@ public class Singleton {
         this.stations.add(identificadorEstacion);
     }
 
+    public void resetStations()
+    {
+        this.stations = new ArrayList<>();
+    }
+
     /*public void addOneStation()
     {
         this.counterStations++;
