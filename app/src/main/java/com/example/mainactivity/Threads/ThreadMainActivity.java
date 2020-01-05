@@ -21,7 +21,7 @@ public class ThreadMainActivity extends Thread{
     private Timer timer;
     private Monitor monitor;
     private MainActivity mainActivity;
-    private TextView notificaciones;
+    //private TextView notificaciones;
 
     public ThreadMainActivity(String idEstacion, String typeMessage, Monitor monitor, DynamicTable dynamicTable, MainActivity mainActivity)
     {
@@ -34,7 +34,7 @@ public class ThreadMainActivity extends Thread{
         this.message = "";
     }
 
-    public ThreadMainActivity(String idEstacion, String typeMessage, Monitor monitor, TextView notificaciones, MainActivity mainActivity)
+    public ThreadMainActivity(String idEstacion, String typeMessage, Monitor monitor, MainActivity mainActivity)
     {
         this.idEstacion = idEstacion;
         this.typeMessage = typeMessage;
@@ -42,7 +42,7 @@ public class ThreadMainActivity extends Thread{
         this.monitor = monitor;
         this.timer = new Timer(monitor);
         this.message = "";
-        this.notificaciones = notificaciones;
+        //this.notificaciones = notificaciones;
     }
 
     @Override
@@ -51,8 +51,8 @@ public class ThreadMainActivity extends Thread{
         timer.start();
         while(!Singleton.getInstance().isEndConnectionThread())
         {
-            monitor.makeThreadWait();
             monitor.setStopThread(true);
+            monitor.makeThreadWait();
             this.idEstacion = getNumberStations();
             if(typeMessage.equals("RefreshTable"))
             {
@@ -67,9 +67,14 @@ public class ThreadMainActivity extends Thread{
                 monitor.setStopThreadData(true);
 
             }
-            else    //Notify-All, TODO
+            else
             {
-                notificarAll();
+                mainActivity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mainActivity.notificarAll();
+                    }
+                });
             }
 
         }
@@ -119,11 +124,11 @@ public class ThreadMainActivity extends Thread{
         return result;
     }
 
-    public void notificarAll(){
+    /*public void notificarAll(){
         mainActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                String alerta = resultadoNotifyAll();
+                String alerta = mainActivity.resultadoNotifyAll();
                 if(!alerta.isEmpty()){
                     notificaciones.setText(alerta);
                 }else{
@@ -131,29 +136,8 @@ public class ThreadMainActivity extends Thread{
                 }
             }
         });
-    }
+    }*/
 
-    public String resultadoNotifyAll(){
-
-        FutureTask task = new FutureTask(new Cliente("NotifyAll"));
-
-        ExecutorService es = Executors.newSingleThreadExecutor();
-        es.submit(task);
-
-        String result = "";
-
-        try {
-
-            result = task.get().toString();
-        } catch (Exception e) {
-
-            System.err.println(e);
-        }
-
-        es.shutdown();
-
-        return result;
-    }
 
 
 }

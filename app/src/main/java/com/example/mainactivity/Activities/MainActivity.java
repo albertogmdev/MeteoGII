@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         this.hiloRefresh = new ThreadMainActivity(String.valueOf(getNumberStations()), "RefreshTable", monitor,dynamicTable, MainActivity.this);
         notificaciones = findViewById(R.id.notifyAll);
         notificarAll();
-        this.hiloNotify = new ThreadMainActivity(String.valueOf(getNumberStations()), "NotifyAll", monitor, notificaciones, MainActivity.this);
+        this.hiloNotify = new ThreadMainActivity(String.valueOf(getNumberStations()), "NotifyAll", monitor, MainActivity.this);
         this.hiloRefresh.start();
         this.hiloNotify.start();
     }

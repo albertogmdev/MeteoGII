@@ -29,8 +29,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
 import com.example.mainactivity.Cliente;
+import com.example.mainactivity.Monitor;
 import com.example.mainactivity.R;
 import com.example.mainactivity.Singleton;
+import com.example.mainactivity.Threads.ThreadStationInformationActivity;
 import com.weiwangcn.betterspinner.library.BetterSpinner;
 
 public class StationInformationActivity extends AppCompatActivity {
@@ -47,7 +49,7 @@ public class StationInformationActivity extends AppCompatActivity {
     private ImageView tiempoImagen;
     private ImageButton graficasButton;
     private static final String[] stations = Singleton.getInstance().getStations();
-    private TextView[] listTextView = {null, null, null, null, null, null, null, null, null};
+    private Monitor monitor = new Monitor();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,15 +72,7 @@ public class StationInformationActivity extends AppCompatActivity {
         calidadAire = findViewById(R.id.calidadValor);
         tiempoImagen = findViewById(R.id.tiempoValor);
         graficasButton = findViewById(R.id.graficas);
-        listTextView[0] = temperatura;
-        listTextView[1] = humedad;
-        listTextView[2] = presion;
-        listTextView[3] = lluvia;
-        listTextView[4] = luz;
-        listTextView[5] = anemometro;
-        listTextView[6] = radiacion;
-        listTextView[7] = sensacion;
-        listTextView[8] = calidadAire;
+        monitor = new Monitor();
 
         notifyStation();
         refresh(resultadoRefresh());
@@ -95,10 +89,15 @@ public class StationInformationActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 Singleton.getInstance().setIdentificadorEstacion(spinnerStation.getText().toString());
+                notifyStation();
                 refresh(resultadoRefresh());
             }
         });
 
+        ThreadStationInformationActivity hiloEstacionRefresh = new ThreadStationInformationActivity(spinnerStation.getText().toString(), "Refresh", monitor, StationInformationActivity.this);
+        ThreadStationInformationActivity hiloEstacionNotify = new ThreadStationInformationActivity(spinnerStation.getText().toString(), "Notify", monitor, StationInformationActivity.this);
+        hiloEstacionRefresh.start();
+        hiloEstacionNotify.start();
     }
 
     //No se como hacer que vaya a la siguiente pestaña
@@ -264,7 +263,7 @@ public class StationInformationActivity extends AppCompatActivity {
 
 
     public String resultadoRefresh() {
-
+        Singleton.getInstance().setIdentificadorEstacion(spinnerStation.getText().toString());
         FutureTask task = new FutureTask(new Cliente(spinnerStation.getText().toString(), "Refresh"));
 
         ExecutorService es = Executors.newSingleThreadExecutor();
