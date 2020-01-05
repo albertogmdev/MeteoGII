@@ -1,11 +1,14 @@
-package com.example.mainactivity;
+package com.example.mainactivity.Threads;
 
 import android.util.Log;
 
-public class Timer extends Thread {
+import com.example.mainactivity.Monitor;
+import com.example.mainactivity.Singleton;
+
+public class TimerStationInformationActivity extends Thread {
     private Monitor monitor;
 
-    public Timer(Monitor monitor)
+    public TimerStationInformationActivity(Monitor monitor)
     {
         this.monitor = monitor;
     }
@@ -13,7 +16,7 @@ public class Timer extends Thread {
     public void run()
     {
         int counter = 0;
-        while(!Singleton.getInstance().isEndConnectionThread())
+        while(!Singleton.getInstance().isEndConnectionThreadStationActivity())
         {
             if(counter == 10)
             {

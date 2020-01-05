@@ -8,20 +8,19 @@ import android.os.Bundle;
 import com.example.mainactivity.R;
 import com.example.mainactivity.Singleton;
 
-public class graficasActivity extends AppCompatActivity {
+public class GraficasActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.graficas_information);
+        setContentView(R.layout.activity_graficas_information);
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Singleton.getInstance().setEndConnectionThread(true);
-        startActivity(new Intent(graficasActivity.this, StationInformationActivity.class));
+        startActivity(new Intent(GraficasActivity.this, StationInformationActivity.class));
         finish();
     }
 

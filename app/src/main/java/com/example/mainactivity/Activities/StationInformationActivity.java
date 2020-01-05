@@ -32,6 +32,7 @@ import com.example.mainactivity.Cliente;
 import com.example.mainactivity.Monitor;
 import com.example.mainactivity.R;
 import com.example.mainactivity.Singleton;
+import com.example.mainactivity.StationGraphicsActivity;
 import com.example.mainactivity.Threads.ThreadStationInformationActivity;
 import com.weiwangcn.betterspinner.library.BetterSpinner;
 
@@ -56,7 +57,7 @@ public class StationInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_station_information);
         //Log.e("HEY", "Problem2");
-        Singleton.getInstance().setEndConnectionThread(false);
+        Singleton.getInstance().setEndConnectionThreadStationActivity(false);
         spinnerStation = findViewById(R.id.spinnerestacion);
         ArrayAdapter<String> adapterStations = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, stations);
         spinnerStation.setAdapter(adapterStations);
@@ -101,7 +102,12 @@ public class StationInformationActivity extends AppCompatActivity {
     }
 
     //No se como hacer que vaya a la siguiente pestaña
-    public void graficasBoton(View v){
+    public void graficasBoton(View v)
+    {
+        Singleton.getInstance().setIdentificadorEstacion(spinnerStation.getText().toString());
+        Singleton.getInstance().setEndConnectionThreadStationActivity(true);
+        startActivity(new Intent(StationInformationActivity.this, StationGraphicsActivity.class));
+        finish();
 
         /*Singleton.getInstance().addStation("1");
         //Asignamose el Listener
@@ -126,9 +132,9 @@ public class StationInformationActivity extends AppCompatActivity {
             }
         });*/
 
-        //startActivity(new Intent(StationInformationActivity.this, graficasActivity.class));
+        //startActivity(new Intent(StationInformationActivity.this, GraficasActivity.class));
         //finish();
-        //Intent intent= new Intent (this, graficasActivity.class);
+        //Intent intent= new Intent (this, GraficasActivity.class);
         //this.startActivity(intent);
     }
 
@@ -380,8 +386,8 @@ public class StationInformationActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Singleton.getInstance().setEndConnectionThread(true);
         startActivity(new Intent(StationInformationActivity.this, MainActivity.class));
+        Singleton.getInstance().setEndConnectionThreadStationActivity(true);
         finish();
     }
 

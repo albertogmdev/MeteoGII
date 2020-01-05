@@ -10,7 +10,8 @@ public class Singleton {
     private String[] headerMainActivity = {"Identificador", "Ubicación", "Temperatura", "Humedad", "Presión Atmosférica"};
     private ArrayList<String> stations = new ArrayList<>();
     private int counterStations;
-    private boolean endConnectionThread;
+    private boolean endConnectionThreadMainActivity;
+    private boolean endConnectionThreadStationActivity;
 
     public static synchronized Singleton getInstance() {
         if (instance == null) {
@@ -24,7 +25,8 @@ public class Singleton {
 
         this.identificadorEstacion = "";
         this.counterStations = 0;
-        this.endConnectionThread = false;
+        this.endConnectionThreadMainActivity = false;
+        this.endConnectionThreadStationActivity = false;
     }
 
     public String getIdentificadorEstacion() {
@@ -80,11 +82,19 @@ public class Singleton {
         this.counterStations = counterStations;
     }
 
-    public boolean isEndConnectionThread() {
-        return endConnectionThread;
+    public boolean isEndConnectionThreadMainActivity() {
+        return endConnectionThreadMainActivity;
     }
 
-    public void setEndConnectionThread(boolean endConnectionThread) {
-        this.endConnectionThread = endConnectionThread;
+    public void setEndConnectionThreadMainActivity(boolean endConnectionThreadMainActivity) {
+        this.endConnectionThreadMainActivity = endConnectionThreadMainActivity;
+    }
+
+    public boolean isEndConnectionThreadStationActivity() {
+        return endConnectionThreadStationActivity;
+    }
+
+    public void setEndConnectionThreadStationActivity(boolean endConnectionThreadStationActivity) {
+        this.endConnectionThreadStationActivity = endConnectionThreadStationActivity;
     }
 }

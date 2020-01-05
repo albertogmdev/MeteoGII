@@ -3,13 +3,12 @@ package com.example.mainactivity.Threads;
 import com.example.mainactivity.Activities.StationInformationActivity;
 import com.example.mainactivity.Monitor;
 import com.example.mainactivity.Singleton;
-import com.example.mainactivity.Timer;
 
 public class ThreadStationInformationActivity extends Thread{
     private String typeMessage;
     private String idEstacion;
     private String message;
-    private Timer timer;
+    private TimerStationInformationActivity timer;
     private Monitor monitor;
     private StationInformationActivity stationInformationActivity;
 
@@ -21,7 +20,7 @@ public class ThreadStationInformationActivity extends Thread{
         this.typeMessage = typeMessage;
         this.monitor = monitor;
         this.message = "";
-        this.timer = new Timer(monitor);
+        this.timer = new TimerStationInformationActivity(monitor);
         this.stationInformationActivity = stationInformationActivity;
 
     }
@@ -30,7 +29,7 @@ public class ThreadStationInformationActivity extends Thread{
     public void run()
     {
         timer.start();
-        while(!Singleton.getInstance().isEndConnectionThread())
+        while(!Singleton.getInstance().isEndConnectionThreadStationActivity())
         {
             monitor.setStopThread(true);
             monitor.makeThreadWait();

@@ -1,13 +1,10 @@
 package com.example.mainactivity.Threads;
 
-import android.widget.TextView;
-
 import com.example.mainactivity.Activities.MainActivity;
 import com.example.mainactivity.Cliente;
 import com.example.mainactivity.DynamicTable;
 import com.example.mainactivity.Monitor;
 import com.example.mainactivity.Singleton;
-import com.example.mainactivity.Timer;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -18,7 +15,7 @@ public class ThreadMainActivity extends Thread{
     private String idEstacion;
     private String message;
     private DynamicTable dynamicTable;
-    private Timer timer;
+    private TimerMainActivity timerMainActivity;
     private Monitor monitor;
     private MainActivity mainActivity;
     //private TextView notificaciones;
@@ -30,7 +27,7 @@ public class ThreadMainActivity extends Thread{
         this.mainActivity = mainActivity;
         this.dynamicTable = dynamicTable;
         this.monitor = monitor;
-        this.timer = new Timer(monitor);
+        this.timerMainActivity = new TimerMainActivity(monitor);
         this.message = "";
     }
 
@@ -40,7 +37,7 @@ public class ThreadMainActivity extends Thread{
         this.typeMessage = typeMessage;
         this.mainActivity = mainActivity;
         this.monitor = monitor;
-        this.timer = new Timer(monitor);
+        this.timerMainActivity = new TimerMainActivity(monitor);
         this.message = "";
         //this.notificaciones = notificaciones;
     }
@@ -48,8 +45,8 @@ public class ThreadMainActivity extends Thread{
     @Override
     public void run()
     {
-        timer.start();
-        while(!Singleton.getInstance().isEndConnectionThread())
+        timerMainActivity.start();
+        while(!Singleton.getInstance().isEndConnectionThreadMainActivity())
         {
             monitor.setStopThread(true);
             monitor.makeThreadWait();

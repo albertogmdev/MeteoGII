@@ -114,18 +114,9 @@ public class DynamicTable {
                         public void onClick(View v) {
                             //Toast.makeText(context, " Listener botón " + v.getTag(), Toast.LENGTH_SHORT).show();
                             Singleton.getInstance().setIdentificadorEstacion(finalInfo);
-                            Singleton.getInstance().setEndConnectionThread(true);
-                            int secs = 1; // Delay in seconds
-
-                            Utils.delay(secs, new Utils.DelayCallback() {
-                                @Override
-                                public void afterDelay() {
-                                    // Do something after delay
-                                    mainActivity.startActivity(new Intent(mainActivity, StationInformationActivity.class));
-                                    mainActivity.finish();
-                                }
-                            });
-
+                            Singleton.getInstance().setEndConnectionThreadMainActivity(true);
+                            mainActivity.startActivity(new Intent(mainActivity, StationInformationActivity.class));
+                            mainActivity.finish();
                         }
                     });
                     buttonStation.setBackgroundColor(Color.parseColor("#333232"));

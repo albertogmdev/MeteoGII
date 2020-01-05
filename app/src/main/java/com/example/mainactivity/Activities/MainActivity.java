@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Singleton.getInstance().setEndConnectionThread(false);
+        Singleton.getInstance().setEndConnectionThreadMainActivity(false);
         tableLayout = findViewById(R.id.tableestaciones);
         rows = new ArrayList<>();
         this.monitor = new Monitor();
