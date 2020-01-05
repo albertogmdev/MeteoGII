@@ -89,6 +89,11 @@ public class Cliente implements Callable<String> {
                 mensaje = "Weather-"+idConexion+"-"+idConexion2;
 
             }
+            //Graph-idEstacion-columna devuelve un string con token1 = dia-hora y token2 = valor de la columna en esa hora y dia
+            //idConexion = idEstacion que se quiere consultar y idConexion2 = nombre de la columna que se quiere consultar
+            else if(typeMessage.equals("Graph")){
+                mensaje = "Graph-"+idConexion+"-"+idConexion2;
+            }
 
             salida.writeUTF(mensaje);
 
