@@ -32,7 +32,6 @@ import com.example.mainactivity.Cliente;
 import com.example.mainactivity.Monitor;
 import com.example.mainactivity.R;
 import com.example.mainactivity.Singleton;
-import com.example.mainactivity.StationGraphicsActivity;
 import com.example.mainactivity.Threads.ThreadStationInformationActivity;
 import com.weiwangcn.betterspinner.library.BetterSpinner;
 
@@ -105,7 +104,7 @@ public class StationInformationActivity extends AppCompatActivity {
     public void graficasBoton(View v)
     {
         Singleton.getInstance().setIdentificadorEstacion(spinnerStation.getText().toString());
-        Singleton.getInstance().setEndConnectionThreadStationActivity(true);
+        //Singleton.getInstance().setEndConnectionThreadStationActivity(true);
         startActivity(new Intent(StationInformationActivity.this, StationGraphicsActivity.class));
         finish();
 

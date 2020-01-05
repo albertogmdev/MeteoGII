@@ -27,11 +27,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="Estacion   "
+                android:text="@string/estacion"
 
                 android:textAlignment="viewStart"
                 android:textColor="@color/colorLetra"
-                android:textSize="25sp"
+                android:textSize="30sp"
 
                 app:layout_constraintBottom_toTopOf="@id/fijo" />
         </LinearLayout>
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorBoton"
                 android:textColor="@color/colorLetra"
-                android:textSize="25sp">
+                android:textSize="30sp">
 
             </com.weiwangcn.betterspinner.library.BetterSpinner>
         </LinearLayout>
@@ -94,7 +94,7 @@
                         android:id="@+id/tiempo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TIEMPO"
+                        android:text="@string/tiempo"
                         android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
@@ -131,7 +131,7 @@
                         android:id="@+id/temperatura"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TEMPERATURA"
+                        android:text="@string/temperatura"
                         android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
@@ -168,7 +168,7 @@
                         android:id="@+id/humedad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="HUMEDAD"
+                        android:text="@string/humedad"
                         android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
@@ -205,7 +205,7 @@
                         android:id="@+id/sensacion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="SENSACION \nTERMICA"
+                        android:text="@string/sensacion_termica"
                         android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
@@ -242,7 +242,7 @@
                         android:id="@+id/presion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="PRESION \nATMOSFERICA"
+                        android:text="@string/presion_atmosferica"
                         android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
@@ -280,7 +280,7 @@
                         android:id="@+id/lluvia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="LLUVIA"
+                        android:text="@string/lluvia"
                         android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
@@ -317,7 +317,7 @@
                         android:id="@+id/luz"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="NIVEL DE LUZ"
+                        android:text="@string/nivel_de_luz"
                         android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
@@ -354,7 +354,7 @@
                         android:id="@+id/anemometro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ANEMOMETRO"
+                        android:text="@string/anemometro"
                         android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
@@ -391,7 +391,7 @@
                         android:id="@+id/aire"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="CALIDAD DEL \nAIRE"
+                        android:text="@string/calidad_del_aire"
                         android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
@@ -428,7 +428,7 @@
                         android:id="@+id/radiacion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="NIVEL DE \nRADIACION"
+                        android:text="@string/nivel_de_radiacion"
                         android:textAlignment="center"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />

@@ -37,6 +37,7 @@
 
             <!--- GRAFICA temperatura -->
             <LinearLayout
+                android:id="@+id/blockTemperatura"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -52,7 +53,7 @@
                         android:id="@+id/temperaturaG"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Temperatura"
+                        android:text="@string/temperatura"
                         android:textAlignment="viewStart"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
@@ -74,6 +75,7 @@
 
             <!--- GRAFICA humedad -->
             <LinearLayout
+                android:id="@+id/blockHumedad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -89,7 +91,7 @@
                         android:id="@+id/humedadG"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Temperatura"
+                        android:text="@string/humedad"
                         android:textAlignment="viewStart"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />
@@ -111,6 +113,7 @@
 
             <!--- GRAFICA presion -->
             <LinearLayout
+                android:id="@+id/blockPresion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -126,7 +129,7 @@
                         android:id="@+id/presionG"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Presion"
+                        android:text="@string/presion"
                         android:textAlignment="viewStart"
                         android:textColor="@color/colorLetra"
                         android:textSize="20sp" />

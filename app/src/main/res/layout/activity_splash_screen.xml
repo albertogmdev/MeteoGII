@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
 
             android:elegantTextHeight="true"
-            android:text="Bienvenid@ a METEOGII"
+            android:text="@string/bienvenid_a_meteogii"
             android:textAlignment="center"
             android:textColor="@color/colorLetra"
 
@@ -48,7 +48,7 @@
             android:background="@color/colorBoton"
             android:onClick="startButton"
 
-            android:text="EMPEZAR"
+            android:text="@string/empezar"
             android:textColor="@color/colorLetra"/>
     </LinearLayout>
 </LinearLayout>

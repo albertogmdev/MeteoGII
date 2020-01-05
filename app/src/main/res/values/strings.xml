@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">MeteoGII</string>
+    <string name="temperatura">Temperatura</string>
+    <string name="humedad">Humedad</string>
+    <string name="presion">Presion</string>
+    <string name="bienvenid_a_meteogii">Bienvenid@ a METEOGII</string>
+    <string name="empezar">EMPEZAR</string>
+    <string name="estacion">Estación</string>
+    <string name="tiempo">Tiempo</string>
+    <string name="sensacion_termica">Sensación  Térmica</string>
+    <string name="presion_atmosferica">Presión Atmosférica</string>
+    <string name="lluvia">Lluvia</string>
+    <string name="nivel_de_luz">Nivel de Luz</string>
+    <string name="anemometro">Anemómetro</string>
+    <string name="calidad_del_aire">Calidad del Aire</string>
+    <string name="nivel_de_radiacion">Nivel de Radiación</string>
 </resources>
