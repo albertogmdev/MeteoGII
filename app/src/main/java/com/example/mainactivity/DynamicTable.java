@@ -26,7 +26,7 @@ public class DynamicTable {
     private TableRow tableRow;
     private TextView textCell;
     private Monitor monitor;
-    //private HiloMainActivity hiloRefresh;
+    //private ThreadMainActivity hiloRefresh;
 
     private int indexCell;
     private int indexRow;
@@ -37,7 +37,7 @@ public class DynamicTable {
         this.tableLayout = tableLayout;
         this.context = context;
         this.monitor = monitor;
-        //this.hiloRefresh = new HiloMainActivity(String.valueOf(mainActivity.getNumberStations()), "RefreshTable", monitor,DynamicTable.this, mainActivity);
+        //this.hiloRefresh = new ThreadMainActivity(String.valueOf(mainActivity.getNumberStations()), "RefreshTable", monitor,DynamicTable.this, mainActivity);
         //this.hiloRefresh.start();
 
         //Singleton.getInstance().resetCounterStations();

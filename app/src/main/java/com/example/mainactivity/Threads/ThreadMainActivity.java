@@ -13,7 +13,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
-public class HiloMainActivity extends Thread{
+public class ThreadMainActivity extends Thread{
     private String typeMessage;
     private String idEstacion;
     private String message;
@@ -23,7 +23,7 @@ public class HiloMainActivity extends Thread{
     private MainActivity mainActivity;
     private TextView notificaciones;
 
-    public HiloMainActivity(String idEstacion, String typeMessage, Monitor monitor, DynamicTable dynamicTable, MainActivity mainActivity)
+    public ThreadMainActivity(String idEstacion, String typeMessage, Monitor monitor, DynamicTable dynamicTable, MainActivity mainActivity)
     {
         this.idEstacion = idEstacion;
         this.typeMessage = typeMessage;
@@ -34,7 +34,7 @@ public class HiloMainActivity extends Thread{
         this.message = "";
     }
 
-    public HiloMainActivity(String idEstacion, String typeMessage, Monitor monitor, TextView notificaciones, MainActivity mainActivity)
+    public ThreadMainActivity(String idEstacion, String typeMessage, Monitor monitor, TextView notificaciones, MainActivity mainActivity)
     {
         this.idEstacion = idEstacion;
         this.typeMessage = typeMessage;

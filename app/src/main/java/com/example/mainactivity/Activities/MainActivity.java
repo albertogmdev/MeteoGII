@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.example.mainactivity.Cliente;
 import com.example.mainactivity.DynamicTable;
-import com.example.mainactivity.Threads.HiloMainActivity;
+import com.example.mainactivity.Threads.ThreadMainActivity;
 import com.example.mainactivity.Monitor;
 import com.example.mainactivity.R;
 import com.example.mainactivity.Singleton;
@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private TableLayout tableLayout;
     private String[] header = Singleton.getInstance().getHeaderMainActivity();
     private ArrayList<String[]> rows;
-    private HiloMainActivity hiloRefresh;
-    private HiloMainActivity hiloNotify;
+    private ThreadMainActivity hiloRefresh;
+    private ThreadMainActivity hiloNotify;
     private Monitor monitor;
 
     private TextView notificaciones;
@@ -40,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
         DynamicTable dynamicTable = new DynamicTable(MainActivity.this, tableLayout, getApplicationContext(), monitor);
         dynamicTable.addHeader(header);
         dynamicTable.addData(getData());
-        this.hiloRefresh = new HiloMainActivity(String.valueOf(getNumberStations()), "RefreshTable", monitor,dynamicTable, MainActivity.this);
+        this.hiloRefresh = new ThreadMainActivity(String.valueOf(getNumberStations()), "RefreshTable", monitor,dynamicTable, MainActivity.this);
         notificaciones = findViewById(R.id.notifyAll);
         notificarAll();
-        this.hiloNotify = new HiloMainActivity(String.valueOf(getNumberStations()), "NotifyAll", monitor, notificaciones, MainActivity.this);
+        this.hiloNotify = new ThreadMainActivity(String.valueOf(getNumberStations()), "NotifyAll", monitor, notificaciones, MainActivity.this);
         this.hiloRefresh.start();
         this.hiloNotify.start();
     }
