@@ -300,7 +300,7 @@ public class StationInformationActivity extends AppCompatActivity {
         String alertaEstacion = resultadoNotify();
 
         if(!alertaEstacion.isEmpty()){
-            crearNotificacion("!ALERTA¡ Estación "+ spinnerStation.getText().toString(), alertaEstacion, getApplicationContext());
+            crearNotificacion("¡ALERTA! Estación "+ spinnerStation.getText().toString(), alertaEstacion, getApplicationContext());
         }
 
     }
