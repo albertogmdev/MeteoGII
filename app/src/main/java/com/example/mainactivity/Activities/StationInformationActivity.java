@@ -126,7 +126,7 @@ public class StationInformationActivity extends AppCompatActivity {
         //Habria que llamar al servidor con el token 6 y 5, luz y lluvia
         String rutaTiempo = resultadoImage(String.format(datos[6]), String.format(datos[5]));
 
-        if(!rutaTiempo.isEmpty())
+        if(!rutaTiempo.isEmpty() && !rutaTiempo.equals("NULL"))
         {
             //Habria que cambiar este TextView por un ImageView
             switch(rutaTiempo){
@@ -152,7 +152,7 @@ public class StationInformationActivity extends AppCompatActivity {
         else
         {
             //Aqui poner lo que se quiera se puede poner una imagen de error o lo que sea
-            tiempoImagen.setImageResource(R.drawable.refrescar);
+            tiempoImagen.setImageResource(R.drawable.icon_no_image);
         }
 
         if(!datos[2].equals("NULL"))
@@ -261,9 +261,9 @@ public class StationInformationActivity extends AppCompatActivity {
         return result;
     }
 
-    public String resultadoImage(String luz, String lluvia){
+    public String resultadoImage(String idConexion, String idConexion2){
 
-        FutureTask task = new FutureTask(new Cliente(luz, lluvia, "Weather"));
+        FutureTask task = new FutureTask(new Cliente(idConexion, idConexion2, "Weather"));
 
         ExecutorService es = Executors.newSingleThreadExecutor();
         es.submit(task);

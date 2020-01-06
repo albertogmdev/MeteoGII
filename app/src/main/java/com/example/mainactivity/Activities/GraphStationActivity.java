@@ -138,7 +138,7 @@ public class GraphStationActivity extends AppCompatActivity {
                         break;
                     //Dato
                     case 1:
-                        if(columnas[j].equals("NULL"))
+                        if(columnas[j].equals("NULL") || columnas[j].equals("null"))
                         {
                             valor = 0;
                         }

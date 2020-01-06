@@ -12,6 +12,7 @@ import com.example.mainactivity.Threads.ThreadGraph;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TableLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
@@ -24,6 +25,7 @@ public class WeatherGraphStationActivity extends AppCompatActivity {
     private ArrayList<String[]> rows;
     private ThreadGraph hiloRefresh;
     private Monitor monitor;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +33,13 @@ public class WeatherGraphStationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_weather_graph_station);
         this.tableLayout = findViewById(R.id.tablaTiempo);
         Singleton.getInstance().setEndConnectionThreadGraphActivity(false);
+        this.textView = findViewById(R.id.titulo);
+        textView.setText("Gráfica Tiempo Estación " + Singleton.getInstance().getIdentificadorEstacion());
         this.rows = new ArrayList<>();
+        this.monitor = new Monitor();
         DynamicTable dynamicTable = new DynamicTable(WeatherGraphStationActivity.this, tableLayout, getApplicationContext(), monitor);
         dynamicTable.addHeaderMainActivity(header);
         dynamicTable.addDataMainActivity(getData());
-        this.monitor = new Monitor();
         this.hiloRefresh = new ThreadGraph(String.valueOf(Singleton.getInstance().getIdentificadorEstacion()), Singleton.getInstance().getTypeGraph(), monitor,dynamicTable);
 
         this.hiloRefresh.start();
@@ -83,7 +87,7 @@ public class WeatherGraphStationActivity extends AppCompatActivity {
 
     private String resultadoRefresh() {
 
-        FutureTask task = new FutureTask(new Cliente(String.valueOf(Singleton.getInstance().getIdentificadorEstacion()), "RefreshWeather"));
+        FutureTask task = new FutureTask(new Cliente(String.valueOf(Singleton.getInstance().getIdentificadorEstacion()), "Tiempo","Graph"));
 
         ExecutorService es = Executors.newSingleThreadExecutor();
         es.submit(task);
