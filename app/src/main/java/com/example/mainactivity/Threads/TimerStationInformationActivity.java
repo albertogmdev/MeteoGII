@@ -18,7 +18,7 @@ public class TimerStationInformationActivity extends Thread {
         int counter = 0;
         while(!Singleton.getInstance().isEndConnectionThreadStationActivity())
         {
-            if(counter == 10)
+            if(counter == 300)
             {
                 monitor.setStopThread(false);
                 monitor.activeThread();

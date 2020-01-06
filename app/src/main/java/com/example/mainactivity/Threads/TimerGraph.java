@@ -16,7 +16,7 @@ public class TimerGraph extends Thread{
         int counter = 0;
         while(!Singleton.getInstance().isEndConnectionThreadGraphActivity())
         {
-            if(counter == 10)
+            if(counter == 300)
             {
                 monitor.setStopThread(false);
                 monitor.activeThread();
