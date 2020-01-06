@@ -60,7 +60,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            android:src="@drawable/icon_weather"
+                            android:src="@drawable/icon_temperature"
                             android:background="@color/colorLetra">
 
                         </ImageView>
