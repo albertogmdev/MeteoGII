@@ -13,6 +13,7 @@ import com.anychart.chart.common.dataentry.ValueDataEntry;
 import com.anychart.charts.Pie;
 import com.example.mainactivity.R;
 import com.example.mainactivity.Singleton;
+import com.example.mainactivity.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +31,16 @@ public class StationGraphicsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Singleton.getInstance().setEndConnectionThreadStationActivity(true);
-        startActivity(new Intent(StationGraphicsActivity.this, StationInformationActivity.class));
-        finish();
+        int secs = 1; // Delay in seconds
+
+        Utils.delay(secs, new Utils.DelayCallback() {
+            @Override
+            public void afterDelay() {
+                // Do something after delay
+                startActivity(new Intent(StationGraphicsActivity.this, StationInformationActivity.class));
+                finish();
+            }
+        });
     }
 
     public void temperatureButton(View view) {

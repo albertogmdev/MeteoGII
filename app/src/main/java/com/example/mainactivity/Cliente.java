@@ -18,9 +18,9 @@ public class Cliente implements Callable<String> {
 
     private String idConexion, idConexion2;
 
-    public Cliente(String luz, String lluvia, String typeMesage){
-        this.idConexion2 = lluvia;
-        this.idConexion = luz;
+    public Cliente(String idConexion, String idConexion2, String typeMesage){
+        this.idConexion = idConexion;
+        this.idConexion2 = idConexion2;
         this.typeMessage = typeMesage;
         this.respuesta = "NULL";
     }
@@ -36,6 +36,8 @@ public class Cliente implements Callable<String> {
         this.typeMessage = typeMesage;
         this.respuesta = "NULL";
     }
+
+
 
     @Override
     public String call(){

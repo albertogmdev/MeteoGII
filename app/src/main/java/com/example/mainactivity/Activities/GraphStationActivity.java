@@ -3,9 +3,12 @@ package com.example.mainactivity.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.mainactivity.Cliente;
+import com.example.mainactivity.CustomDataEntryLC;
 import com.example.mainactivity.Monitor;
 import com.example.mainactivity.R;
 import com.example.mainactivity.Singleton;
@@ -94,48 +97,66 @@ public class GraphStationActivity extends AppCompatActivity {
         }
         series1.hovered().markers().enabled(true);
         series1.hovered().markers()
+                //.stroke(("#03A9F4"))
                 .type(MarkerType.CIRCLE)
                 .size(4d);
         series1.tooltip()
-                .position("center")
+                .position("right")
                 .anchor(Anchor.LEFT_CENTER)
                 .offsetX(5d)
                 .offsetY(5d);
         cartesian.legend().enabled(true);
-        cartesian.legend().fontSize(13d);
+        cartesian.legend().fontSize(15d);
         cartesian.legend().padding(0d, 0d, 10d, 0d);
         lineChart.setChart(cartesian);
     }
 
     public  ArrayList getData()
     {
-        ArrayList<String[]> rows = new ArrayList<>();
+        ArrayList<CustomDataEntryLC> rows = new ArrayList<>();
         String respuesta = resultadoRefresh();
 
         String[] listaFilas = respuesta.split("\n");
+        Log.e("HEY", "Mojon " + listaFilas.length);
+        String fecha = "";
+        Number valor = 0;
 
         for(int i = 0; i < listaFilas.length; i++)
         {
             String[] columnas = listaFilas[i].split("//");
+            //Log.e("HEY", listaFilas[i]);
             //Array con las unidades
-            String nuevo[] = new String[5];
+            //String nuevo[] = new String[5];
 
             for(int j=0; j<columnas.length; j++){
+                //Log.e("HEY", "WAY: " + columnas.length);
+                //Log.e("HEY", "WAY: " +  j +" " + columnas[j]);
                 switch (j){
                     //Fecha
                     case 0:
-                        nuevo[j] = columnas[j];
+                        fecha = columnas[j];
+                        break;
                     //Dato
                     case 1:
-                        nuevo[j] = columnas[j];
+                        if(columnas[j].equals("NULL"))
+                        {
+                            valor = 0;
+                        }
+                        else
+                        {
+                            valor = Integer.parseInt(columnas[j]);
+                        }
                         break;
                     default:
                         break;
                 }
             }
 
-            rows.add(nuevo);
+            //Log.e("HEY", "Fecha: " + " Valor: " + valor);
+            rows.add(new CustomDataEntryLC(fecha, valor));
+
         }
+        //Log.e("HEY", "VAMOS " + rows.size());
 
         return rows;
     }
@@ -144,15 +165,15 @@ public class GraphStationActivity extends AppCompatActivity {
         FutureTask task;
         if(Singleton.getInstance().getTypeGraph().equals("TemperatureGraph"))
         {
-            task = new FutureTask(new Cliente(String.valueOf(Singleton.getInstance().getIdentificadorEstacion()), "RefreshTemperature"));
+            task = new FutureTask(new Cliente(String.valueOf(Singleton.getInstance().getIdentificadorEstacion()), "Temperatura", "Graph"));
         }
         else if(Singleton.getInstance().getTypeGraph().equals("HumidityGraph"))
         {
-            task = new FutureTask(new Cliente(String.valueOf(Singleton.getInstance().getIdentificadorEstacion()), "RefreshHumidity"));
+            task = new FutureTask(new Cliente(String.valueOf(Singleton.getInstance().getIdentificadorEstacion()), "Humedad", "Graph"));
         }
         else
         {
-            task = new FutureTask(new Cliente(String.valueOf(Singleton.getInstance().getIdentificadorEstacion()), "RefreshRadiation"));
+            task = new FutureTask(new Cliente(String.valueOf(Singleton.getInstance().getIdentificadorEstacion()), "Nivel_Radiacion", "Graph"));
         }
 
         ExecutorService es = Executors.newSingleThreadExecutor();
@@ -177,7 +198,7 @@ public class GraphStationActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Singleton.getInstance().setEndConnectionThreadGraphActivity(true);
-        startActivity(new Intent(GraphStationActivity.this, GraphStationActivity.class));
+        startActivity(new Intent(GraphStationActivity.this, StationGraphicsActivity.class));
         finish();
     }
 }

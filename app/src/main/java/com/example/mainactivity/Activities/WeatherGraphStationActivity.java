@@ -31,6 +31,7 @@ public class WeatherGraphStationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_weather_graph_station);
         this.tableLayout = findViewById(R.id.tablaTiempo);
         Singleton.getInstance().setEndConnectionThreadGraphActivity(false);
+        this.rows = new ArrayList<>();
         DynamicTable dynamicTable = new DynamicTable(WeatherGraphStationActivity.this, tableLayout, getApplicationContext(), monitor);
         dynamicTable.addHeaderMainActivity(header);
         dynamicTable.addDataMainActivity(getData());
@@ -57,6 +58,7 @@ public class WeatherGraphStationActivity extends AppCompatActivity {
                     //Fecha
                     case 0:
                         nuevo[j] = columnas[j];
+                        break;
                     case 1:
                         nuevo[j] = columnas[j];
                         break;
