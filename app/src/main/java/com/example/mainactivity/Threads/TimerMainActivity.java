@@ -18,7 +18,7 @@ public class TimerMainActivity extends Thread {
         int counter = 0;
         while(!Singleton.getInstance().isEndConnectionThreadMainActivity())
         {
-            if(counter == 10)
+            if(counter == 300)
             {
                 monitor.setStopThread(false);
                 monitor.activeThread();
