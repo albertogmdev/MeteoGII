@@ -111,7 +111,7 @@ public class WeatherGraphStationActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Singleton.getInstance().setEndConnectionThreadGraphActivity(true);
-        startActivity(new Intent(WeatherGraphStationActivity.this, GraphStationActivity.class));
+        startActivity(new Intent(WeatherGraphStationActivity.this, StationGraphicsActivity.class));
         finish();
     }
 }
