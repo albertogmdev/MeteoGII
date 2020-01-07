@@ -126,7 +126,7 @@ public class StationInformationActivity extends AppCompatActivity {
         //Habria que llamar al servidor con el token 6 y 5, luz y lluvia
         String rutaTiempo = resultadoImage(String.format(datos[6]), String.format(datos[5]));
 
-        if(!rutaTiempo.isEmpty() && !rutaTiempo.equals("NULL"))
+        if(!rutaTiempo.isEmpty() && !rutaTiempo.toLowerCase().equals("null"))
         {
             //Habria que cambiar este TextView por un ImageView
             switch(rutaTiempo){

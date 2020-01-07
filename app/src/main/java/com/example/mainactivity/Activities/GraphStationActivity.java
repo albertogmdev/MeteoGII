@@ -144,7 +144,7 @@ public class GraphStationActivity extends AppCompatActivity {
                         }
                         else
                         {
-                            valor = Integer.parseInt(columnas[j]);
+                            valor = Float.parseFloat(columnas[j]);
                         }
                         break;
                     default:
