@@ -42,16 +42,23 @@
             </HorizontalScrollView>
         </ScrollView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="30dp"
-            android:id="@+id/notifyAll"
-            android:text=""
-            android:textAlignment="viewStart"
-            android:textColor="@color/colorLetra"
-            android:textSize="20sp"
-            />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:id="@+id/notifyAll"
+                android:text=""
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorLetra"
+                android:textSize="20sp"
+                android:layout_marginBottom="20dp"
+
+                />
+        </ScrollView>
 
     </LinearLayout>
 
