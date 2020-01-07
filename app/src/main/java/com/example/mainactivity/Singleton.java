@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class Singleton {
     private static Singleton instance;
     private String identificadorEstacion;
-    private String[] headerMainActivity = {"Identificador", "Ubicación", "Temperatura", "Humedad", "Presión Atmosférica"};
+    private String[] headerMainActivity = {"  Identificador  ", "Ubicación", "  Temperatura  ", "  Humedad  ", "  Presión Atmosférica  "};
     private String[] headerWeatherGraphStationActivity = {"Fecha", "Tiempo Atm."};
     private ArrayList<String> stations = new ArrayList<>();
     private int counterStations;
