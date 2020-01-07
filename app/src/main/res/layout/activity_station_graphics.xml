@@ -43,7 +43,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="30dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,8 +61,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            android:src="@drawable/icon_weather"
-                            android:background="@color/colorLetra">
+                            android:src="@drawable/icon_temperature">
 
                         </ImageView>
                     </LinearLayout>
@@ -94,8 +94,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            android:src="@drawable/icon_humidity"
-                            android:background="@color/colorLetra">
+                            android:src="@drawable/icon_humidity">
 
                         </ImageView>
                     </LinearLayout>
@@ -131,8 +130,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            android:src="@drawable/icon_weather"
-                            android:background="@color/colorLetra">
+                            android:src="@drawable/icon_weather">
 
                         </ImageView>
                     </LinearLayout>
@@ -165,8 +163,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            android:src="@drawable/icon_radiation"
-                            android:background="@color/colorLetra">
+                            android:src="@drawable/icon_radiation">
 
                         </ImageView>
                     </LinearLayout>
