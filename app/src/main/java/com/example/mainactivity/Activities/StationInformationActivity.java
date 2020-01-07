@@ -95,9 +95,9 @@ public class StationInformationActivity extends AppCompatActivity {
         });
 
         ThreadStationInformationActivity hiloEstacionRefresh = new ThreadStationInformationActivity(spinnerStation.getText().toString(), "Refresh", monitor, StationInformationActivity.this);
-        //ThreadStationInformationActivity hiloEstacionNotify = new ThreadStationInformationActivity(spinnerStation.getText().toString(), "Notify", monitor, StationInformationActivity.this);
+        ThreadStationInformationActivity hiloEstacionNotify = new ThreadStationInformationActivity(spinnerStation.getText().toString(), "Notify", monitor, StationInformationActivity.this);
         hiloEstacionRefresh.start();
-        //hiloEstacionNotify.start();
+        hiloEstacionNotify.start();
     }
 
     //No se como hacer que vaya a la siguiente pestaña
