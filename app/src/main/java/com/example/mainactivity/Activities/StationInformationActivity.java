@@ -10,6 +10,7 @@ import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -22,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.BitSet;
 import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.ExecutorService;
@@ -335,6 +337,7 @@ public class StationInformationActivity extends AppCompatActivity {
                 .setSmallIcon(R.drawable.notificacion)
                 .setContentTitle(title)
                 .setContentText(message)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
                 .setVibrate(new long[]{100, 250})
                 .setLights(Color.YELLOW, 500, 5000)
                 .setAutoCancel(true)
